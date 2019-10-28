@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+   <title>My title</title>
+   <link rel="stylesheet" href="http://stash.compjour.org/assets/css/foundation.css">
+<style> 
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.graph_container {
+  height: 500px;
+  width: auto;
+  background-color: powderblue;
+}
+
+.rules_container {
+  height: 500px;
+  width: auto;
+  background-color: powderblue;
+}
+
+</style>
+</head>
+
+
+<body style="width: 880px; margin: auto;">  
+
+    <h1>P-CARE</h1>
+
+    <h5>This is the Project Charter document for the Patient Cognitive Analytics
+     Response Engine (P-CARE) project for Ken Lowry and CareRight Technologies.
+      This project is being undertaken by the Black Box development team. 
+      The team is comprised of undergraduate students majoring in Computer 
+      Science at California State University, Sacramento. The team members are 
+      enrolled in a two-semester senior project course required of all 
+      undergraduate majors. Successful delivery of the desired software product
+       will fulfill the senior project requirement for the student team members.'
+       </h5>
+
+    <button class = "button" type="button">Pull Data!</button>
+    
+       
+    <form action="/run_data">
+      <button class = "button" type="submit">Run Data</button>
+  </form>
+
+  <form action="/analyze_data">
+    <button class = "button" type="submit">Analyze Data</button>
+  </form>
+
+
+    <div class="graph_container" > 
+    </div>
+
+    <hr>
+    <br>
+
+    <div class="rules_container" > 
+      </div>
+  
+    
+    
+</body>
