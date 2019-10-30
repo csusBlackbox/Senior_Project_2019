@@ -58,6 +58,10 @@ def homepage():
 def rundata_click():
     return render_template('analyze_data.html')
 
+@app.route('/pull_data')
+def pulldata_click():
+    return render_template('pull_data.html')
+
 @app.route('/gender')
 def show_gener_graph():
     # Read data csv in
