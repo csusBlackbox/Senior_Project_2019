@@ -25,6 +25,28 @@ display(HTML("<style>.container { width:90% !important; }</style>"))
 import collections
 from sklearn.metrics import f1_score
 from sklearn import tree
+
+
+
+
+
+
+
+from collections import Counter
+#from colour import Color
+import json
+from operator import itemgetter
+import pandas as pd
+from scipy import stats
+import six
+from statsmodels.graphics.mosaicplot import mosaic
+import sys
+from sklearn.feature_extraction import DictVectorizer
+from sklearn.model_selection import StratifiedKFold, ShuffleSplit
+from sklearn.model_selection import GridSearchCV
+from sklearn.feature_extraction.text import TfidfTransformer
+#from lime.lime_tabular import LimeTabularExplainer
+#import tensorflow as tf
 ####
 
 @app.route('/')
@@ -83,7 +105,7 @@ def show_specialty_graph():
     ax.set(xlabel='Counts', ylabel = '')
     plt.setp(ax.get_xticklabels(), rotation=45, horizontalalignment='right')
     plt.tight_layout()
-   # plt.show()
+    # plt.show()
     #saving graphs as png
     fig.savefig('static/specialty.png')
     return render_template('specialty.html')
@@ -145,8 +167,26 @@ def show_rules():
     return  render_template('rules.html', antecedents = antecedents, consequents = consequents, confidence = confidence, length = length)
 
     
-
-
+@app.route('/region')
+def target_barplot():
+	df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	series = df['region']
+	fig_size=(10,5)
+	fig = plt.figure(figsize=(10,5))
+	ax = plt.subplot()
+	counts = series.value_counts()
+	vals = counts.values
+	pers = vals / vals.sum()
+	ax = plt.subplot()
+	counts.plot(title=series.name, kind='barh', figsize=fig_size, ax=ax, color = 'slateblue')
+	plt.style.use('seaborn-whitegrid')
+	nudged_vals = vals * 1.01  
+	for i, val in enumerate(nudged_vals):
+		formatted_per = '{:0.01%}'.format(pers[i])
+		ax.text(nudged_vals[i], i, formatted_per)
+	ax.set_xlim((0, max(counts.values)*1.2))
+	fig.savefig('static/region.png')
+	return render_template('region.html')
 
 
 #if __name__ == '__main__':
