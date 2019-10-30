@@ -33,6 +33,54 @@
     <link href= "{{ url_for('static',filename='styles/demo.css')}}" rel="stylesheet" />
 </head>
 
+<style>
+        .loader {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        left: 35%;
+        top: 35%;
+        animation: spin 5s  forwards;
+        }
+
+      
+
+        /* Safari */
+        @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+        0%   {opacity: 1;}
+        90%  {opacity: 1;}
+        100% {opacity: 0;}
+        }
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        0%   {opacity: 1;}
+        90%  {opacity: 1;}
+        100% {opacity: 0;}
+        }
+
+
+        .usamap{
+                animation: cssAnimation 0s 5s forwards;
+                visibility: hidden;
+                }
+
+        @keyframes cssAnimation {
+        to   { visibility: visible; }
+        99%   {opacity: 0.1;}
+        100%   {opacity: 1;}
+            }
+
+
+</style>
+
+
+
 <body>
     <div class="wrapper">
         <div class="sidebar" data-image="{{ url_for('static',filename='styles/sidebar-5.jpg')}}">
@@ -90,26 +138,25 @@
                 </div>
             </nav>
             </nav>
+
+            <!-- USA MAP -->
+            <div class = "usamap">
+              <img src= "{{ url_for('static', filename='map graphic.png')}}"  height = "500px" width = "1000px">  
+            </div>
+            
+            <p># of records, # of columns, shape of our data</p>
+
+            <div class="loader">
+
+            </div>
+
+
+
             <!-- End Navbar -->
             <div class="content">
                 <div class="container-fluid">
-				 <div class="col-md-14">
-						 
-						 <p>Rules go here	</p>
-						 
-						 </div>
-                    <div class="row">
+				 
                         
-						 
-                        <div class="col-md-10">
-                            <div class="card ">
-                                
-                               <p> graphs go here ...</p>
-                             
-                            </div>
-                        </div>
-                    </div>
-                    
                 </div>
             </div>
             <footer class="footer">
@@ -129,7 +176,7 @@
         </div>
     </div>
 
-    <img src = "map graphic.png" > 
+    
     
 
 </body>
