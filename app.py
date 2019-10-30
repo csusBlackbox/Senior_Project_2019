@@ -33,7 +33,7 @@ from sklearn import tree
 
 
 from collections import Counter
-#from colour import Color
+from colour import Color
 import json
 from operator import itemgetter
 import pandas as pd
@@ -86,6 +86,13 @@ def gender_barplot():
 @app.route('/gender_vs_specialty')
 def gender_specialty_graph():
 
+	def increase_luminance(color_str, multiplier=0):
+		c = Color(color_str)
+		lum = 0.8 - np.repeat(0.1, multiplier).sum()
+		c.luminance = lum
+		return {'color': str(c)}
+
+
 	def target_mosaic(cat1, cat2, figsize=(18, 4)):
 		xtab = pd.crosstab(cat1, cat2).unstack()
 		# Bas colors:
@@ -94,6 +101,14 @@ def gender_specialty_graph():
 		# These need to be strings for `mosaic`
 		cat1_levels = list(map(str, cat1.value_counts().keys().values))
 		cat2_levels = list(map(str, cat2.value_counts().keys().values))
+		
+		def prop(key):
+			c2, c1 = key
+			cat1_index = cat1_levels.index(c1)
+			cat2_index = cat2_levels.index(c2)
+			base_color = colors[cat2_index % color_count]
+			adjusted = increase_luminance(base_color, multiplier=cat1_index)
+			return adjusted
 		# Display only the y-axis category inside the box:
 		lab = (lambda key : key[1])
 		fig, _ = mosaic(xtab, gap=0.01, labelizer=lab, properties=prop)
@@ -116,15 +131,6 @@ def gender_specialty_graph():
 				if c >= specialty_mincount and c <= specialty_maxcount]
 	specialty = specialty[specialty.isin(subset)]
 	target_mosaic(cat2, specialty)
-	
-	def prop(key):
-		c2, c1 = key
-		cat1_index = cat1_levels.index(c1)
-		cat2_index = cat2_levels.index(c2)
-		base_color = colors[cat2_index % color_count]
-		adjusted = increase_luminance(base_color, multiplier=cat1_index)
-		return adjusted
-		
 	return render_template('gender_vs_specialty.html')
 	
 	
