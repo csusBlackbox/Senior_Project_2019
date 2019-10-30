@@ -63,63 +63,145 @@ def pulldata_click():
     return render_template('pull_data.html')
 
 @app.route('/gender')
-def show_gener_graph():
-    # Read data csv in
-    df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
-    #graphing    
-    fig = plt.figure(figsize=(10,10))
-    #plt.title('gender',fontdict={'fontsize':'30'})
-    ax = sns.countplot(y='gender',data= df,palette='husl')
-    ax.set(xlabel='Counts', ylabel='')
-    plt.setp(ax.get_xticklabels(), rotation=45, horizontalalignment='right')
-    plt.tight_layout()
-    #plt.show()
-    #saving graphs as png
-    fig.savefig('static/gender.png')
-    
-    return render_template('gender.html')
+def gender_barplot():
+	df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	series = df['gender']
+	fig_size=(10,5)
+	fig = plt.figure(figsize=(10,5))
+	ax = plt.subplot()
+	counts = series.value_counts()
+	vals = counts.values
+	pers = vals / vals.sum()
+	ax = plt.subplot()
+	counts.plot(title=series.name, kind='barh', figsize=fig_size, ax=ax, color = 'slateblue')
+	plt.style.use('seaborn-whitegrid')
+	nudged_vals = vals * 1.01  
+	for i, val in enumerate(nudged_vals):
+		formatted_per = '{:0.01%}'.format(pers[i])
+		ax.text(nudged_vals[i], i, formatted_per)
+	ax.set_xlim((0, max(counts.values)*1.2))
+	fig.savefig('static/gender.png')
+	return render_template('gender.html')
 
+@app.route('/gender_vs_specialty')
+def gender_specialty_graph():
 
-
-@app.route('/settlement')
+	def target_mosaic(cat1, cat2, figsize=(18, 4)):
+		xtab = pd.crosstab(cat1, cat2).unstack()
+		# Bas colors:
+		colors = ['#0499CC', '#4D8951', '#FDBA58', '#876DB5', '#32A8B4', '#9BB8D7', '#839A8A']
+		color_count = len(colors)
+		# These need to be strings for `mosaic`
+		cat1_levels = list(map(str, cat1.value_counts().keys().values))
+		cat2_levels = list(map(str, cat2.value_counts().keys().values))
+		# Display only the y-axis category inside the box:
+		lab = (lambda key : key[1])
+		fig, _ = mosaic(xtab, gap=0.01, labelizer=lab, properties=prop)
+		figwidth, figheight = figsize
+		fig.set_figwidth(figwidth)
+		fig.set_figheight(figheight)
+		fig.savefig('static/gender_vs_specialty.png')
+		
+		
+	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	cat2='gender'
+	specialty_mincount=1500
+	specialty_maxcount=None
+	cat2 = ys[cat2]
+	specialty = ys['specialty']
+	dist = specialty.value_counts()
+	if specialty_maxcount == None:
+		specialty_maxcount = dist.max()
+	subset = [s for s,c in dist.items()
+				if c >= specialty_mincount and c <= specialty_maxcount]
+	specialty = specialty[specialty.isin(subset)]
+	target_mosaic(cat2, specialty)
+	
+	def prop(key):
+		c2, c1 = key
+		cat1_index = cat1_levels.index(c1)
+		cat2_index = cat2_levels.index(c2)
+		base_color = colors[cat2_index % color_count]
+		adjusted = increase_luminance(base_color, multiplier=cat1_index)
+		return adjusted
+		
+	return render_template('gender_vs_specialty.html')
+	
+	
+	
+@app.route('/settlement_type')
 def show_settlement_graph():
-    # Read data csv in
-    df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
-    #graphing     
-    fig = plt.figure(figsize=(10,10))
-    #plt.title('settlement_type',fontdict={'fontsize':'30'})
-    ax = sns.countplot(y='settlement_type',data= df,palette='husl')
-    ax.set(xlabel='Counts', ylabel='')
-    plt.setp(ax.get_xticklabels(), rotation=45, horizontalalignment='right')
-    plt.tight_layout()
-    #plt.show()
-    #saving graphs as png
-    fig.savefig('static/settlement.png')
-    return render_template('settlement.html')
+	df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	series = df['settlement_type']
+	fig_size=(10,5)
+	fig = plt.figure(figsize=(10,5))
+	ax = plt.subplot()
+	counts = series.value_counts()
+	vals = counts.values
+	pers = vals / vals.sum()
+	ax = plt.subplot()
+	counts.plot(title=series.name, kind='barh', figsize=fig_size, ax=ax, color = 'slateblue')
+	plt.style.use('seaborn-whitegrid')
+	nudged_vals = vals * 1.01  
+	for i, val in enumerate(nudged_vals):
+		formatted_per = '{:0.01%}'.format(pers[i])
+		ax.text(nudged_vals[i], i, formatted_per)
+	ax.set_xlim((0, max(counts.values)*1.2))
+	fig.savefig('static/settlement_type.png')
+	return render_template('settlement_type.html')
 
 
 @app.route('/specialty')
 def show_specialty_graph():
-    # Read data csv in
-    df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
-    #graphing     
-    fig = plt.figure(figsize=(10,10))
-    #plt.title('specialty',fontdict={'fontsize':'30'})
-    ax = sns.countplot(y='specialty',data= df,palette='Spectral')
-    ax.set(xlabel='Counts', ylabel = '')
-    plt.setp(ax.get_xticklabels(), rotation=45, horizontalalignment='right')
-    plt.tight_layout()
-    # plt.show()
-    #saving graphs as png
-    fig.savefig('static/specialty.png')
-    return render_template('specialty.html')
+	df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	series = df['specialty']
+	fig_size=(10,15)
+	fig = plt.figure(figsize=(10,15))
+	ax = plt.subplot()
+	counts = series.value_counts()
+	vals = counts.values
+	pers = vals / vals.sum()
+	ax = plt.subplot()
+	counts.plot(title=series.name, kind='barh', figsize=fig_size, ax=ax, color = 'slateblue')
+	plt.style.use('seaborn-whitegrid')
+	nudged_vals = vals * 1.01  
+	for i, val in enumerate(nudged_vals):
+		formatted_per = '{:0.01%}'.format(pers[i])
+		ax.text(nudged_vals[i], i, formatted_per)
+	ax.set_xlim((0, max(counts.values)*1.2))
+	fig.savefig('static/specialty.png')
+	return render_template('specialty.html')
+	
+
+@app.route('/years_practice')
+def years_practice_graph():
+	df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	series = df['specialty']
+	fig_size=(10,5)
+	fig = plt.figure(figsize=(10,5))
+	ax = plt.subplot()
+	counts = series.value_counts()
+	vals = counts.values
+	pers = vals / vals.sum()
+	ax = plt.subplot()
+	counts.plot(title=series.name, kind='barh', figsize=fig_size, ax=ax, color = 'slateblue')
+	plt.style.use('seaborn-whitegrid')
+	nudged_vals = vals * 1.01  
+	for i, val in enumerate(nudged_vals):
+		formatted_per = '{:0.01%}'.format(pers[i])
+		ax.text(nudged_vals[i], i, formatted_per)
+	ax.set_xlim((0, max(counts.values)*1.2))
+	fig.savefig('static/years_practice.png')
+	return render_template('years_practice.html')
+
+
+
 
 
 
 
 
 @app.route('/rules')
-
 def show_rules():
     def encode_text_dummy(df, name):
         dummies = pd.get_dummies(df[name])
