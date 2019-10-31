@@ -27,11 +27,28 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
-    <link href= "{{ url_for('static',filename='styles/bootstrap.min.css')}}" rel="stylesheet" />
+	<link href= "{{ url_for('static',filename='styles/bootstrap.min.css')}}" rel="stylesheet" />
     <link href= "{{ url_for('static',filename='styles/light-bootstrap-dashboard.css')}} " rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href= "{{ url_for('static',filename='styles/demo.css')}}" rel="stylesheet" />
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
+  
 </head>
+
+<style>
+
+.btn-group{
+position: absolute;
+    
+    
+}
+
+</style>
 
 <body>
     <div class="wrapper">
@@ -50,32 +67,22 @@
                 <ul class="nav">
                     
                     <li>
-                        <a class="nav-link">
+                        <a class="nav-link" href="/pull_data">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>Pull Data</p>
                         </a>
                     </li>
-                    <li>
-                       
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="nc-icon nc-circle-09"></i>
-									<span class="no-icon">Run Data</span>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item"  href="/gender">Gender</a>
-                                    <a class="dropdown-item"  href="/specialty">Specialty</a>
-                                    <a class="dropdown-item" href="/settlement">Settlement</a>
-								</div>	
-                                   
-                            </li>
-                           
-                       
                     </li>
-					  <li>
+                    	 <li>
                         <a class="nav-link"  href="/analyze_data">
-                            <i class="nc-icon nc-notes"></i>
+                            <i class="nc-icon nc-circle-09"></i>
                             <p>Analyze Data</p>
+                        </a>
+                    </li>
+					 <li>
+                        <a class="nav-link"  href="/rules">
+                            <i class="nc-icon nc-notes"></i>
+                            <p>Rules</p>
                         </a>
                     </li>
 
@@ -88,7 +95,6 @@
         <div class="main-panel">
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
-                <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/dashboard"> Dashboard </a>
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,11 +102,88 @@
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
                     </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <ul class="nav navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-toggle="dropdown">
+
+                                    <span class="d-lg-none">Dashboard</span>
+                                </a>
+                            </li>
                    
+                    
+                        </ul>
+                        
+                    </div>
                 </div>
             </nav>
+
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                 
+                  
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                        
+                        
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Years Practice </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/years_practice">Years Practice</a>
+                                        <a class="dropdown-item" href="/gender_vs_years">Years Practice vs Gender</a> 
+                                    </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Region </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/region">Region</a>
+                                            <a class="dropdown-item" href="/gender_vs_region">Region vs Gender</a> 
+                                            <a class="dropdown-item" href="/region_vs_settlement">Region vs Settlement</a> 
+                                        </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Specialty </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/specialty">Specialty</a>
+                                            <a class="dropdown-item" href="/gender_vs_specialty">Specialty vs Gender</a>
+                                            <a class="dropdown-item" href="/settlement_vs_specialty">Specialty vs Settlement</a> 
+                                        </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Settlement </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/settlement_type">Settlement</a>
+                                            <a class="dropdown-item" href="/gender_vs_settlement">Settlement vs Gender</a>
+                                            <a class="dropdown-item" href="/region_vs_settlement">Settlement vs Region</a>
+                                            <a class="dropdown-item" href="/settlement_vs_specialty">Settlement vs Specialty</a> 
+                                        </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Gender </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/gender">Gender</a>
+                                            <a class="dropdown-item" href="/gender_vs_years">Gender vs Years Practive</a>
+                                            <a class="dropdown-item" href="/gender_vs_region">Gender vs Region</a>
+                                            <a class="dropdown-item" href="/gender_vs_specialty">Gender vs Specialty</a> 
+                                            <a class="dropdown-item" href="/gender_vs_settlement">Gender vs Settlement</a> 
+                                        </div>
+                            </li>
+                    
+                        </ul>
+                </div>
+
             </nav>
-            <!-- End Navbar -->
+                
+			
             <div class="content">
                 <div class="container-fluid">
 
@@ -139,7 +222,16 @@
             </footer>
         </div>
     </div>
-    
+    <script>
+	$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+
+	</script>
 
 </body>
 <!--   Core JS Files   -->
