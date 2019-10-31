@@ -62,8 +62,12 @@ from sklearn.feature_extraction.text import TfidfTransformer
 
 #gender vs specialty  // specialty vs gender  done
 #gender vs settlement // settlement vs gender done
-#gender vs region  	 // region vs gender  done
+#gender vs region  	 // region vs gender  done   ---needs fix----
 #gender vs years		// years vs gender		-------needs fixing-------------
+	
+#region vs settlement 	// setttlnent vs region 	done
+
+#settlement vs specialty 								done
 	
 
 
@@ -83,7 +87,7 @@ def rundata_click():
 
 @app.route('/pull_data')
 def pulldata_click():
-    return render_template('pull_data.html')
+    return render_template('pull_data_API.html')
 
 @app.route('/gender')
 def gender_barplot():
@@ -105,7 +109,6 @@ def gender_barplot():
 	ax.set_xlim((0, max(counts.values)*1.2))
 	fig.savefig('static/gender.png')
 	return render_template('gender.html')
-
 
 @app.route('/gender_vs_specialty')
 def gender_specialty_graph():
@@ -329,6 +332,107 @@ def show_settlement_graph():
 	return render_template('settlement_type.html')
 
 
+@app.route('/region_vs_settlement')
+def region_settlement_graph():
+
+	def increase_luminance(color_str, multiplier=0):
+		c = Color(color_str)
+		lum = 0.8 - np.repeat(0.1, multiplier).sum()
+		c.luminance = lum
+		return {'color': str(c)}
+
+
+	def target_mosaic(cat1, cat2, figsize=(18, 4)):
+		xtab = pd.crosstab(cat1, cat2).unstack()
+		# Bas colors:
+		colors = ['#0499CC', '#4D8951', '#FDBA58', '#876DB5', '#32A8B4', '#9BB8D7', '#839A8A']
+		color_count = len(colors)
+		# These need to be strings for `mosaic`
+		cat1_levels = list(map(str, cat1.value_counts().keys().values))
+		cat2_levels = list(map(str, cat2.value_counts().keys().values))
+		
+		def prop(key):
+			c2, c1 = key
+			cat1_index = cat1_levels.index(c1)
+			cat2_index = cat2_levels.index(c2)
+			base_color = colors[cat2_index % color_count]
+			adjusted = increase_luminance(base_color, multiplier=cat1_index)
+			return adjusted
+		# Display only the y-axis category inside the box:
+		lab = (lambda key : key[1])
+		fig, _ = mosaic(xtab, gap=0.01, labelizer=lab, properties=prop)
+		figwidth, figheight = figsize
+		fig.set_figwidth(figwidth)
+		fig.set_figheight(figheight)
+		fig.savefig('static/region_vs_settlement.png')
+		
+	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	cat2='settlement_type'
+	region_mincount=1500
+	region_maxcount=None
+	cat2 = ys[cat2]
+	region = ys['region']
+	dist = region.value_counts()
+	if region_maxcount == None:
+		region_maxcount = dist.max()
+	subset = [s for s,c in dist.items()
+				if c >= region_mincount and c <= region_maxcount]
+	region = region[region.isin(subset)]
+	target_mosaic(cat2, region)
+	return render_template('region_vs_settlement.html')
+
+
+@app.route('/settlement_vs_specialty')
+def settlement_specialty_graph():
+
+	def increase_luminance(color_str, multiplier=0):
+		c = Color(color_str)
+		lum = 0.8 - np.repeat(0.1, multiplier).sum()
+		c.luminance = lum
+		return {'color': str(c)}
+
+
+	def target_mosaic(cat1, cat2, figsize=(18, 4)):
+		xtab = pd.crosstab(cat1, cat2).unstack()
+		# Bas colors:
+		colors = ['#0499CC', '#4D8951', '#FDBA58', '#876DB5', '#32A8B4', '#9BB8D7', '#839A8A']
+		color_count = len(colors)
+		# These need to be strings for `mosaic`
+		cat1_levels = list(map(str, cat1.value_counts().keys().values))
+		cat2_levels = list(map(str, cat2.value_counts().keys().values))
+		
+		def prop(key):
+			c2, c1 = key
+			cat1_index = cat1_levels.index(c1)
+			cat2_index = cat2_levels.index(c2)
+			base_color = colors[cat2_index % color_count]
+			adjusted = increase_luminance(base_color, multiplier=cat1_index)
+			return adjusted
+		# Display only the y-axis category inside the box:
+		lab = (lambda key : key[1])
+		fig, _ = mosaic(xtab, gap=0.01, labelizer=lab, properties=prop)
+		figwidth, figheight = figsize
+		fig.set_figwidth(figwidth)
+		fig.set_figheight(figheight)
+		fig.savefig('static/settlement_vs_specialty.png')
+		
+		
+	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	cat2='settlement_type'
+	specialty_mincount=1500
+	specialty_maxcount=None
+	cat2 = ys[cat2]
+	specialty = ys['specialty']
+	dist = specialty.value_counts()
+	if specialty_maxcount == None:
+		specialty_maxcount = dist.max()
+	subset = [s for s,c in dist.items()
+				if c >= specialty_mincount and c <= specialty_maxcount]
+	specialty = specialty[specialty.isin(subset)]
+	target_mosaic(cat2, specialty)
+	return render_template('settlement_vs_specialty.html')
+	
+
 @app.route('/specialty')
 def show_specialty_graph():
 	df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
@@ -371,12 +475,6 @@ def years_practice_graph():
 	ax.set_xlim((0, max(counts.values)*1.2))
 	fig.savefig('static/years_practice.png')
 	return render_template('years_practice.html')
-
-
-
-
-
-
 
 
 @app.route('/rules')
