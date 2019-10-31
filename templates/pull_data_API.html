@@ -57,15 +57,36 @@
         90%  {opacity: 1;}
         100% {opacity: 0;}
         }
+
         .usamap{
                 animation: cssAnimation 0s 5s forwards;
                 visibility: hidden;
                 }
         @keyframes cssAnimation {
         to   { visibility: visible; }
-        99%   {opacity: 0.1;}
+        10%   {opacity: 0;}
+        20%   {opacity: 0;}
+        30%   {opacity: 0.1;}
+        40%   {opacity: 0.1;}
+        50%   {opacity: 0.5;}
+        60%   {opacity: 0;}
+        70%   {opacity: 0.5;}
+        80%   {opacity: 0.1;}
+        90%   {opacity: 0.1;}
         100%   {opacity: 1;}
             }
+
+        .isDone {
+            animation: cssAnimation 0s 5s forwards;
+            visibility: hidden;
+            color: blueviolet;
+            }
+}
+
+    
+
+        
+
 </style>
 
 
@@ -132,7 +153,12 @@
               <img src= "{{ url_for('static', filename='map graphic.png')}}"  height = "500px" width = "1000px">  
             </div>
             
-            <p># of records, # of columns, shape of our data</p>
+            <div class = "isDone">
+                <h1>The Data Loading is Complete</h1>
+            </div>
+            
+
+            <p># of records, # of columns, shape of our data </p>
 
             <div class="loader">
 
