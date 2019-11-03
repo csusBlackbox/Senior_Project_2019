@@ -62,12 +62,12 @@ from sklearn.feature_extraction.text import TfidfTransformer
 
 #gender vs specialty  // specialty vs gender  done
 #gender vs settlement // settlement vs gender done
-#gender vs region  	 // region vs gender  done   ---needs fix----
-#gender vs years		// years vs gender		-------needs fixing-------------
+#gender vs region  	 // region vs gender  done  
+#gender vs years		// years vs gender	done	
 	
 #region vs settlement 	// setttlnent vs region 	done
 
-#settlement vs specialty 								done
+#settlement vs specialty // specialty vs settlement done
 	
 
 
@@ -107,7 +107,7 @@ def gender_barplot():
 		formatted_per = '{:0.01%}'.format(pers[i])
 		ax.text(nudged_vals[i], i, formatted_per)
 	ax.set_xlim((0, max(counts.values)*1.2))
-	fig.savefig('static/gender.png')
+	fig.savefig('static/gender.svg')
 	return render_template('gender.html')
 
 @app.route('/gender_vs_specialty')
@@ -142,7 +142,7 @@ def gender_specialty_graph():
 		figwidth, figheight = figsize
 		fig.set_figwidth(figwidth)
 		fig.set_figheight(figheight)
-		fig.savefig('static/gender_vs_specialty.png')
+		fig.savefig('static/gender_vs_specialty.svg')
 		
 		
 	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
@@ -192,7 +192,7 @@ def gender_settlement_graph():
 		figwidth, figheight = figsize
 		fig.set_figwidth(figwidth)
 		fig.set_figheight(figheight)
-		fig.savefig('static/gender_vs_settlement.png')
+		fig.savefig('static/gender_vs_settlement.svg')
 		
 		
 	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
@@ -242,7 +242,7 @@ def gender_region_graph():
 		figwidth, figheight = figsize
 		fig.set_figwidth(figwidth)
 		fig.set_figheight(figheight)
-		fig.savefig('static/gender_vs_region.png')
+		fig.savefig('static/gender_vs_region.svg')
 		
 		
 	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
@@ -250,7 +250,7 @@ def gender_region_graph():
 	region_mincount=1500
 	region_maxcount=None
 	cat2 = ys[cat2]
-	region = ys['gender']
+	region = ys['region']
 	dist = region.value_counts()
 	if region_maxcount == None:
 		region_maxcount = dist.max()
@@ -293,13 +293,14 @@ def gender_years_graph():
 		figwidth, figheight = figsize
 		fig.set_figwidth(figwidth)
 		fig.set_figheight(figheight)
-		fig.savefig('static/gender_vs_years.png')
+		fig.savefig('static/gender_vs_years.svg')
 		
 		
 	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
-	years_mincount=1500
+	cat2='gender'
+	years_mincount=400
 	years_maxcount=None
-	cat2=ys['gender']
+	cat2 = ys[cat2]
 	years = ys['years_practicing']
 	dist = years.value_counts()
 	if years_maxcount == None:
@@ -328,7 +329,7 @@ def show_settlement_graph():
 		formatted_per = '{:0.01%}'.format(pers[i])
 		ax.text(nudged_vals[i], i, formatted_per)
 	ax.set_xlim((0, max(counts.values)*1.2))
-	fig.savefig('static/settlement_type.png')
+	fig.savefig('static/settlement_type.svg')
 	return render_template('settlement_type.html')
 
 
@@ -364,7 +365,7 @@ def region_settlement_graph():
 		figwidth, figheight = figsize
 		fig.set_figwidth(figwidth)
 		fig.set_figheight(figheight)
-		fig.savefig('static/region_vs_settlement.png')
+		fig.savefig('static/region_vs_settlement.svg')
 		
 	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
 	cat2='settlement_type'
@@ -414,7 +415,7 @@ def settlement_specialty_graph():
 		figwidth, figheight = figsize
 		fig.set_figwidth(figwidth)
 		fig.set_figheight(figheight)
-		fig.savefig('static/settlement_vs_specialty.png')
+		fig.savefig('static/settlement_vs_specialty.svg')
 		
 		
 	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
@@ -451,7 +452,7 @@ def show_specialty_graph():
 		formatted_per = '{:0.01%}'.format(pers[i])
 		ax.text(nudged_vals[i], i, formatted_per)
 	ax.set_xlim((0, max(counts.values)*1.2))
-	fig.savefig('static/specialty.png')
+	fig.savefig('static/specialty.svg')
 	return render_template('specialty.html')
 	
 
@@ -473,7 +474,7 @@ def years_practice_graph():
 		formatted_per = '{:0.01%}'.format(pers[i])
 		ax.text(nudged_vals[i], i, formatted_per)
 	ax.set_xlim((0, max(counts.values)*1.2))
-	fig.savefig('static/years_practice.png')
+	fig.savefig('static/years_practice.svg')
 	return render_template('years_practice.html')
 
 
@@ -547,7 +548,7 @@ def target_barplot():
 		formatted_per = '{:0.01%}'.format(pers[i])
 		ax.text(nudged_vals[i], i, formatted_per)
 	ax.set_xlim((0, max(counts.values)*1.2))
-	fig.savefig('static/region.png')
+	fig.savefig('static/region.svg')
 	return render_template('region.html')
 
 
