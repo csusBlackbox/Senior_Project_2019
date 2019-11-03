@@ -108,7 +108,7 @@ def gender_barplot():
 		ax.text(nudged_vals[i], i, formatted_per)
 	ax.set_xlim((0, max(counts.values)*1.2))
 	fig.savefig('static/gender.svg')
-	return render_template('gender.html')
+	return render_template('graph_files/gender.html')
 
 @app.route('/gender_vs_specialty')
 def gender_specialty_graph():
@@ -158,7 +158,7 @@ def gender_specialty_graph():
 				if c >= specialty_mincount and c <= specialty_maxcount]
 	specialty = specialty[specialty.isin(subset)]
 	target_mosaic(cat2, specialty)
-	return render_template('gender_vs_specialty.html')
+	return render_template('graph_files/gender_vs_specialty.html')
 	
 @app.route('/gender_vs_settlement')	
 def gender_settlement_graph(): 
@@ -208,7 +208,7 @@ def gender_settlement_graph():
 				if c >= settlement_mincount and c <= settlement_maxcount]
 	settlement = settlement[settlement.isin(subset)]
 	target_mosaic(cat2, settlement)
-	return render_template('gender_vs_settlement.html')
+	return render_template('graph_files/gender_vs_settlement.html')
 	
 @app.route('/gender_vs_region')
 def gender_region_graph():
@@ -258,7 +258,7 @@ def gender_region_graph():
 				if c >= region_mincount and c <= region_maxcount]
 	region = region[region.isin(subset)]
 	target_mosaic(cat2, region)
-	return render_template('gender_vs_region.html')
+	return render_template('graph_files/gender_vs_region.html')
 
 
 @app.route('/gender_vs_years')
@@ -309,7 +309,7 @@ def gender_years_graph():
 				if c >= years_mincount and c <= years_maxcount]
 	years = years[years.isin(subset)]
 	target_mosaic(cat2, years)
-	return render_template('gender_vs_years.html')
+	return render_template('graph_files/gender_vs_years.html')
 	
 @app.route('/settlement_type')
 def show_settlement_graph():
@@ -330,7 +330,7 @@ def show_settlement_graph():
 		ax.text(nudged_vals[i], i, formatted_per)
 	ax.set_xlim((0, max(counts.values)*1.2))
 	fig.savefig('static/settlement_type.svg')
-	return render_template('settlement_type.html')
+	return render_template('graph_files/settlement_type.html')
 
 
 @app.route('/region_vs_settlement')
@@ -380,7 +380,7 @@ def region_settlement_graph():
 				if c >= region_mincount and c <= region_maxcount]
 	region = region[region.isin(subset)]
 	target_mosaic(cat2, region)
-	return render_template('region_vs_settlement.html')
+	return render_template('graph_files/region_vs_settlement.html')
 
 
 @app.route('/settlement_vs_specialty')
@@ -431,7 +431,7 @@ def settlement_specialty_graph():
 				if c >= specialty_mincount and c <= specialty_maxcount]
 	specialty = specialty[specialty.isin(subset)]
 	target_mosaic(cat2, specialty)
-	return render_template('settlement_vs_specialty.html')
+	return render_template('graph_files/settlement_vs_specialty.html')
 	
 
 @app.route('/specialty')
@@ -453,7 +453,7 @@ def show_specialty_graph():
 		ax.text(nudged_vals[i], i, formatted_per)
 	ax.set_xlim((0, max(counts.values)*1.2))
 	fig.savefig('static/specialty.svg')
-	return render_template('specialty.html')
+	return render_template('graph_files/specialty.html')
 	
 
 @app.route('/years_practice')
@@ -475,7 +475,7 @@ def years_practice_graph():
 		ax.text(nudged_vals[i], i, formatted_per)
 	ax.set_xlim((0, max(counts.values)*1.2))
 	fig.savefig('static/years_practice.svg')
-	return render_template('years_practice.html')
+	return render_template('graph_files/years_practice.html')
 
 
 @app.route('/rules')
@@ -527,7 +527,7 @@ def show_rules():
 
     confidence = results['confidence'].tolist()
 
-    return  render_template('rules.html', antecedents = antecedents, consequents = consequents, confidence = confidence, length = length)
+    return  render_template('rules/rules.html', antecedents = antecedents, consequents = consequents, confidence = confidence, length = length)
 
     
 @app.route('/region')
@@ -549,7 +549,7 @@ def target_barplot():
 		ax.text(nudged_vals[i], i, formatted_per)
 	ax.set_xlim((0, max(counts.values)*1.2))
 	fig.savefig('static/region.svg')
-	return render_template('region.html')
+	return render_template('graph_files/region.html')
 
 
 #if __name__ == '__main__':
