@@ -8,3 +8,9 @@ This is the Project Charter document for the Patient Cognitive Analytics
       enrolled in a two-semester senior project course required of all 
       undergraduate majors. Successful delivery of the desired software product
        will fulfill the senior project requirement for the student team members.
+
+Requirements for installation: 
+
+pip install flask 
+pip install color 
+pip install colour
