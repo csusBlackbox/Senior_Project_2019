@@ -547,7 +547,7 @@ def target_barplot():
 		formatted_per = '{:0.01%}'.format(pers[i])
 		ax.text(nudged_vals[i], i, formatted_per)
 	ax.set_xlim((0, max(counts.values)*1.2))
-	fig.savefig('static/region.png')
+	fig.savefig('static/region.svg')
 	return render_template('region.html')
 
 
