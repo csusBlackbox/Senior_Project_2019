@@ -443,8 +443,8 @@ def settlement_specialty_graph():
 def show_specialty_graph():
 	df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
 	series = df['specialty']
-	fig_size=(10,15)
-	fig = plt.figure(figsize=(10,15))
+	fig_size=(18,15)
+	fig = plt.figure(figsize=(18,15))
 	ax = plt.subplot()
 	counts = series.value_counts()
 	vals = counts.values
