@@ -33,6 +33,11 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href= "{{ url_for('static',filename='styles/demo.css')}}" rel="stylesheet" />
 	
+	
+	
+	<!--image enlarge css -->
+	<link href= "{{ url_for('static',filename='styles/image_enlarge.css')}} " rel="stylesheet" />
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -195,8 +200,13 @@ position: absolute;
                                    
                                 </div>
                                 <div class="card-body ">
-                                   <img src= "{{ url_for('static', filename='gender_vs_settlement.svg')}}" height = "500px" width = "900px" >
-                                </div>
+                                   <img id="myImg" src= "{{ url_for('static', filename='gender_vs_settlement.svg')}}" height = "500px" width = "900px" >
+								<div id="myModal" class="modal">
+									  <span class="close">&times;</span>
+									  <img class="modal-content" id="img01">
+									  <div id="caption"></div>
+									</div>
+							   </div>
                                 
                             </div>
                         </div>
@@ -233,6 +243,9 @@ position: absolute;
 
 </body>
 <!--   Core JS Files   -->
+
+<script src= "{{ url_for('static',filename='styles/image_enlarge.js')}}" type="text/javascript"></script>
+
 <script src= "{{ url_for('static',filename='styles/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
 <script src= "{{ url_for('static',filename='styles/popper.min.js')}}" type="text/javascript"></script>
 <script src= "{{ url_for('static',filename='styles/bootstrap.min.js')}}" type="text/javascript"></script>
