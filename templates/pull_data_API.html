@@ -42,8 +42,6 @@
         animation: spin 5s  forwards;
        
         }
-      
-        /* Safari */
         @-webkit-keyframes spin {
         0% { -webkit-transform: rotate(0deg); }
         100% { -webkit-transform: rotate(360deg); }
@@ -136,7 +134,6 @@
         top: 180px;
         animation: cssAnimation1 0s 7s forwards,shadow-pulse 1s infinite;
         visibility: hidden;
-
         }
 
         .dot4 {
@@ -153,8 +150,6 @@
         visibility: hidden;
         }
 
-
-
         @keyframes cssAnimation1 {
             to   { visibility: visible; }
          }
@@ -170,8 +165,156 @@
             100% {
                 box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
                 }
-
          }
+
+
+         .meter1 { 
+            height: 10px;  /* Can be anything */
+            top: 180px;
+            left: 625px;
+            position: absolute;
+            background: #A3A1FB;
+            -moz-border-radius: 25px;
+            -webkit-border-radius: 25px;
+            border-radius: 25px;
+            padding: 10px;
+            box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+            animation: cssAnimation1 0s 7s forwards, expandWidth1 13s infinite;
+            visibility: hidden; 
+            }
+
+            .meter2 { 
+            height: 10px;  /* Can be anything */
+            top: 265px;
+            left: 625px;
+            position: absolute;
+            background:#5EE2A0;
+            -moz-border-radius: 25px;
+            -webkit-border-radius: 25px;
+            border-radius: 25px;
+            padding: 10px;
+            box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+            animation: cssAnimation1 0s 7s forwards, expandWidth2 13s infinite;
+            visibility: hidden; 
+            }
+
+            .meter3 { 
+            height: 10px;  /* Can be anything */
+            top: 350px;
+            left: 625px;
+            position: absolute;
+            background: #FF6565;
+            -moz-border-radius: 25px;
+            -webkit-border-radius: 25px;
+            border-radius: 25px;
+            padding: 10px;
+            box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+            animation: cssAnimation1 0s 7s forwards, expandWidth3 13s infinite;
+            visibility: hidden; 
+            }
+
+            .meter4 { 
+            height: 10px;  /* Can be anything */
+            top: 445px;
+            left: 625px;
+            position: absolute;
+            background: #FEC163;
+            -moz-border-radius: 25px;
+            -webkit-border-radius: 25px;
+            border-radius: 25px;
+            padding: 10px;
+            box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+            animation: cssAnimation1 0s 7s forwards, expandWidth4 13s infinite;
+            visibility: hidden; 
+            }
+
+           
+
+            @keyframes expandWidthORIGINAL{
+                0% { width: 0; }
+                10% { width: 0%; }
+                40% { width: 0%; }
+                50% { width: 0%; }
+                55% { width: 10%; }
+                60% { width: 20%; }
+                65% { width: 30%; }
+                70% { width: 40%; }
+                75% { width: 50%; }
+                80% { width: 60%; }
+                85% { width: 70%; }
+                90% { width: 80%; }
+                95% { width: 90%; }
+                100% { width: auto; }
+            }
+
+            @keyframes expandWidth1{
+                0% { width: 0; }
+                10% { width: 0%; }
+                40% { width: 0%; }
+                50% { width: 0%; }
+                55% { width: 2%; }
+                60% { width: 4%; }
+                65% { width: 6%; }
+                70% { width: 8%; }
+                75% { width: 10%; }
+                80% { width: 12%; }
+                85% { width: 12%; }
+                90% { width: 12%; }
+                95% { width: 12%; }
+                100% { width: 12%; }
+            }
+
+            @keyframes expandWidth2{
+                0% { width: 0; }
+                10% { width: 0%; }
+                40% { width: 0%; }
+                50% { width: 1%; }
+                55% { width: 3%; }
+                60% { width: 6%; }
+                65% { width: 9%; }
+                70% { width: 11%; }
+                75% { width: 14%; }
+                80% { width: 16%; }
+                85% { width: 18%; }
+                90% { width: 20%; }
+                95% { width: 23%; }
+                100% { width: 25%; }
+            }
+
+            @keyframes expandWidth3{
+                0% { width: 0; }
+                10% { width: 0%; }
+                40% { width: 0%; }
+                50% { width: 0%; }
+                55% { width: 2%; }
+                60% { width: 4%; }
+                65% { width: 6%; }
+                70% { width: 8%; }
+                75% { width: 10%; }
+                80% { width: 12%; }
+                85% { width: 14%; }
+                90% { width: 16%; }
+                95% { width: 18%; }
+                100% { width: 18%; }
+            }
+
+            @keyframes expandWidth4{
+                0% { width: 0; }
+                10% { width: 0%; }
+                40% { width: 0%; }
+                50% { width: 0%; }
+                55% { width: 2%; }
+                60% { width: 4%; }
+                65% { width: 6%; }
+                70% { width: 8%; }
+                75% { width: 9%; }
+                80% { width: 10%; }
+                85% { width: 11%; }
+                90% { width: 13%; }
+                95% { width: 15%; }
+                100% { width: 15%; }
+            }
+      
 
 
 
@@ -240,6 +383,7 @@
 
             <!-- USA MAP -->
             <div class = "usamap">
+
               <img src= "{{ url_for('static', filename='map graphic.png')}}"  height = "500px" width = "1000px">  
 
                   <!-- Circles -->
@@ -249,8 +393,24 @@
                 <span class ="dot4"></span>
                 <span class ="dot5"></span>
 
+                <div class = "meter1" >
+                    <span style="width: 100%"></span>
+                </div>
+                <div class = "meter2" >
+                    <span style="width: 100%"></span>
+                </div>
+                <div class = "meter3" >
+                    <span style="width: 100%"></span>
+                </div>
+                <div class = "meter4" >
+                    <span style="width: 100%"></span>
+                </div>
+                        
+
             </div>
-            
+ 
+
+
             <!-- H1-->
             <div class = "isDone">
                 <h1>The Data Loading is Complete</h1>
