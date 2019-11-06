@@ -35,6 +35,12 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>	
 </head>
 
+<style>
+.btn btn-primary btn-lg{
+	background-color: blueviolet;
+}
+</style>
+
 <body>
     <div class="wrapper">
         <div class="sidebar" data-image="{{ url_for('static',filename='styles/sidebar-5.jpg')}}">
@@ -94,7 +100,9 @@
                 <div class="container-fluid">
 					<div class="col-md-14">
 				 
-						<button onclick="myFunction()">Generate Rules</button>
+						<button type="button" class="btn btn-primary btn-lg"  onclick="myFunction()" >Generate Rules</button>
+						
+						
 						<p id="Rules"></p>
 						
 						<script >
