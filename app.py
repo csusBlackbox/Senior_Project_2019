@@ -4,6 +4,7 @@ app = Flask(__name__)
 ###
 import requests 
 import csv
+#import function_template
 
 from pandas import DataFrame
 import matplotlib.pyplot as plt
@@ -163,6 +164,10 @@ def gender_specialty_graph():
 @app.route('/gender_vs_settlement')	
 def gender_settlement_graph(): 
 
+	
+	
+	
+	
 	def increase_luminance(color_str, multiplier=0):
 		c = Color(color_str)
 		lum = 0.8 - np.repeat(0.1, multiplier).sum()
