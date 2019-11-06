@@ -1,0 +1,288 @@
+ .loader {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        left: 35%;
+        top: 35%;
+        animation: spin 5s  forwards;
+       
+        }
+        @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+        0%   {opacity: 1;}
+        90%  {opacity: 1;}
+        100% {opacity: 0;}
+        }
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        0%   {opacity: 1;}
+        90%  {opacity: 1;}
+        100% {opacity: 0;}
+        }
+
+        .usamap{
+                animation: cssAnimation 0s 5s forwards;
+                visibility: hidden;
+                }
+        @keyframes cssAnimation {
+        to   { visibility: visible; }
+        10%   {opacity: 0;}
+        20%   {opacity: 0;}
+        30%   {opacity: 0.1;}
+        40%   {opacity: 0.1;}
+        50%   {opacity: 0.5;}
+        60%   {opacity: 0;}
+        70%   {opacity: 0.5;}
+        80%   {opacity: 0.1;}
+        90%   {opacity: 0.1;}
+        100%   {opacity: 1;}
+            }
+
+         @-webkit-keyframes cssAnimation {
+        10%   {opacity: 0;}
+        20%   {opacity: 0;}
+        30%   {opacity: 0.1;}
+        40%   {opacity: 0.1;}
+        50%   {opacity: 0.5;}
+        60%   {opacity: 0;}
+        70%   {opacity: 0.5;}
+        80%   {opacity: 0.1;}
+        90%   {opacity: 0.1;}
+        100%   {opacity: 1;}
+         }
+
+     
+
+
+        .isDone {
+            animation: cssAnimation 0s 5s forwards;
+            visibility: hidden;
+            color: blueviolet;
+            }   
+
+        .dot1 {
+        height: 65px;
+        width: 65px;
+        background-color: #A3A1FB;
+        border-radius: 50%;
+        display: inline-block;
+        opacity : 0.7;
+        position: absolute; 
+        left: 55px;
+        top: 250px;
+        animation: cssAnimation1 0s 7s forwards,shadow-pulse 1s infinite;
+        visibility: hidden;
+        }
+
+        .dot2 {
+        height: 75px;
+        width: 75px;
+        background-color: #FEC163;
+        border-radius: 50%;
+        display: inline-block;
+        opacity : 0.7;
+        position: absolute; 
+        left: 370px;
+        top: 250px;
+        animation: cssAnimation1 0s 7s forwards,shadow-pulse 1s infinite;
+        visibility: hidden;
+        }
+
+        .dot3 {
+        height: 85px;
+        width: 85px;
+        background-color: #FF6565;
+        border-radius: 50%;
+        display: inline-block;
+        opacity : 0.7;
+        position: absolute; 
+        left: 620px;
+        top: 180px;
+        animation: cssAnimation1 0s 7s forwards,shadow-pulse 1s infinite;
+        visibility: hidden;
+        }
+
+        .dot4 {
+        height: 95px;
+        width: 95px;
+        background-color: #5EE2A0;
+        border-radius: 50%;
+        display: inline-block;
+        opacity : 0.7;
+        position: absolute; 
+        left: 400px;
+        top: 400px;
+        animation: cssAnimation1 0s 7s forwards, shadow-pulse 1s infinite;
+        visibility: hidden;
+        }
+
+        @keyframes cssAnimation1 {
+            to   { visibility: visible; }
+         }
+
+         @-webkit-keyframes cssAnimation1 {
+            to   { visibility: visible; }
+         }
+
+         @keyframes shadow-pulse {
+            0% {
+                box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+                }
+            100% {
+                box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+                }
+         }
+
+
+         .meter1 { 
+            height: 10px;  /* Can be anything */
+            top: 205px;
+            left: 776px;
+            position: absolute;
+            background: #A3A1FB;
+            -moz-border-radius: 25px;
+            -webkit-border-radius: 25px;
+            border-radius: 25px;
+            padding: 10px;
+            box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+            animation: cssAnimation1 0s 7s forwards, expandWidth1 13s infinite;
+            visibility: hidden; 
+            }
+
+            .meter2 { 
+            height: 10px;  /* Can be anything */
+            top: 310px;
+            left: 776px;
+            position: absolute;
+            background:#5EE2A0;
+            -moz-border-radius: 25px;
+            -webkit-border-radius: 25px;
+            border-radius: 25px;
+            padding: 10px;
+            box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+            animation: cssAnimation1 0s 7s forwards, expandWidth2 13s infinite;
+            visibility: hidden; 
+            }
+
+            .meter3 { 
+            height: 10px;  /* Can be anything */
+            top: 415px;
+            left: 776px;
+            position: absolute;
+            background: #FF6565;
+            -moz-border-radius: 25px;
+            -webkit-border-radius: 25px;
+            border-radius: 25px;
+            padding: 10px;
+            box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+            animation: cssAnimation1 0s 7s forwards, expandWidth3 13s infinite;
+            visibility: hidden; 
+            }
+
+            .meter4 { 
+            height: 10px;  /* Can be anything */
+            top: 520px;
+            left: 776px;
+            position: absolute;
+            background: #FEC163;
+            -moz-border-radius: 25px;
+            -webkit-border-radius: 25px;
+            border-radius: 25px;
+            padding: 10px;
+            box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+            animation: cssAnimation1 0s 7s forwards, expandWidth4 13s infinite;
+            visibility: hidden; 
+            }
+
+           
+
+            @keyframes expandWidthORIGINAL{
+                0% { width: 0; }
+                10% { width: 0%; }
+                40% { width: 0%; }
+                50% { width: 0%; }
+                55% { width: 10%; }
+                60% { width: 20%; }
+                65% { width: 30%; }
+                70% { width: 40%; }
+                75% { width: 50%; }
+                80% { width: 60%; }
+                85% { width: 70%; }
+                90% { width: 80%; }
+                95% { width: 90%; }
+                100% { width: auto; }
+            }
+
+            @keyframes expandWidth1{
+                0% { width: 0; }
+                10% { width: 0%; }
+                40% { width: 0%; }
+                50% { width: 0%; }
+                55% { width: 2%; }
+                60% { width: 4%; }
+                65% { width: 6%; }
+                70% { width: 8%; }
+                75% { width: 10%; }
+                80% { width: 12%; }
+                85% { width: 12%; }
+                90% { width: 12%; }
+                95% { width: 12%; }
+                100% { width: 12%; }
+            }
+
+            @keyframes expandWidth2{
+                0% { width: 0; }
+                10% { width: 0%; }
+                40% { width: 0%; }
+                50% { width: 2%; }
+                55% { width: 4%; }
+                60% { width: 7%; }
+                65% { width: 10%; }
+                70% { width: 13%; }
+                75% { width: 15%; }
+                80% { width: 17%; }
+                85% { width: 19%; }
+                90% { width: 21%; }
+                95% { width: 23%; }
+                100% { width: 25%; }
+            }
+
+            @keyframes expandWidth3{
+                0% { width: 0; }
+                10% { width: 0%; }
+                40% { width: 0%; }
+                50% { width: 0%; }
+                55% { width: 2%; }
+                60% { width: 4%; }
+                65% { width: 6%; }
+                70% { width: 8%; }
+                75% { width: 10%; }
+                80% { width: 12%; }
+                85% { width: 14%; }
+                90% { width: 16%; }
+                95% { width: 18%; }
+                100% { width: 18%; }
+            }
+
+            @keyframes expandWidth4{
+                0% { width: 0; }
+                10% { width: 0%; }
+                40% { width: 0%; }
+                50% { width: 0%; }
+                55% { width: 2%; }
+                60% { width: 4%; }
+                65% { width: 6%; }
+                70% { width: 8%; }
+                75% { width: 9%; }
+                80% { width: 10%; }
+                85% { width: 11%; }
+                90% { width: 13%; }
+                95% { width: 15%; }
+                100% { width: 15%; }
+            }
+      
