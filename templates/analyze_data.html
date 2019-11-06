@@ -192,80 +192,6 @@ position: absolute;
 
 
 
-            <!-- End Navbar -->
-			
-			<!-- MENU --> 
-			<!-- Example single danger button 
-			<div class="container_buttons">
-		 
-				<div class="btn-group">
-				
-					<button type="button" class="btn btn-info">Years Practice</button>
-		 
-						 <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"></button>
-						 
-						    <ul class="dropdown-menu" role="menu">
-						        <li><a href="#">Years vs Gender</a></li>
-						    </ul>
-			    </div>
-								
-		
-				<div class="btn-group">
-				
-					<button type="button" class="btn btn-info">Region</button>
-		 
-						 <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"></button>
-						 
-						 <ul class="dropdown-menu" role="menu">
-						    <li><a href="#">Region vs Gender</a></li>
-				        </ul>
-		        </div>
-		  
-		  
-		  
-                <div class="btn-group">
-                        
-                    <button type="button" class="btn btn-info">Specialty</button>
-                
-                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"></button>
-                                
-                            <ul class="dropdown-menu" role="menu"> 
-                                <li><a href="#">Specialty vs Gender</a>         </li>
-                                <li><a href="#">Specialty vs Settlement</a>     </li>
-                            </ul>
-                </div>
-                
-		  
-                <div class="btn-group">
-                        
-                    <button type="button" class="btn btn-info">Settlement</button>
-                
-                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"> </button>
-                                
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Settlement vs Gender</a>        </li>
-                                <li><a href="#">Settlement vs Region</a>        </li>
-                                <li><a href="#">Settlement vs Specialty</a>     </li>
-                            </ul>
-                </div>
-		  
-                <div class="btn-group">
-                        
-                     <button type="button" class="btn btn-info">Gender</button>
-                
-                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"></button>
-                                
-                        <ul class="dropdown-menu" role="menu">
-                        
-                            <li><a href="#">Gender vs Year</a>      </li>
-                            <li><a href="#">Gender vs Region</a>    </li>
-                            <li><a href="#">Gender vs Specialty</a> </li>
-                            <li><a href="#">Gender vs Settlement</a></li>
-                        </ul>
-                </div>
-                
-		 
-		</div-->
 		
 		  
 		  
@@ -281,59 +207,32 @@ position: absolute;
 							
 			<!-- END MENU -->
 			
-            <div class="content">
-                <div class="container-fluid">
-				
-                    <div class="row">
+            <div class="col-md-10">
+                <div class="content">
+                    <div class="container-fluid">
+    
+                        <div class="row">
+                            
+                             
+                            <div class="col-md-14">
+                                <div class="card ">
+                                    <div class="card-header ">
+                                        <h4 class="card-title" >TEST NAME</h4>
+                                       
+                                    </div>
+                                    <div class="card-body ">
+                                       <img src= "{{ url_for('static', filename='map_graphic_analyze.png')}}" height = "600px" width = "1600px" >
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
                         
-						 
-                        <div class="col-md-10">
-                            <div class="card ">
-                                <div class="card-header ">
-                                    <h4 class="card-title">Users Behavior</h4>
-                                    <p class="card-category">24 Hours performance</p>
-                                </div>
-                                <div class="card-body ">
-                                    <div id="chartHours" class="ct-chart"></div>
-                                </div>
-                                <div class="card-footer ">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Click
-                                        <i class="fa fa-circle text-warning"></i> Click Second Time
-                                    </div>
-                                    <hr>
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10">
-                            <div class="card ">
-                                <div class="card-header ">
-                                    <h4 class="card-title">2017 Sales</h4>
-                                    <p class="card-category">All products including Taxes</p>
-                                </div>
-                                <div class="card-body ">
-                                    <div id="chartActivity" class="ct-chart"></div>
-                                </div>
-                                <div class="card-footer ">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Tesla Model S
-                                        <i class="fa fa-circle text-danger"></i> BMW 5 Series
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-check"></i> Data information certified
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
+
+
             <footer class="footer">
                 <div class="container-fluid">
                     <nav>

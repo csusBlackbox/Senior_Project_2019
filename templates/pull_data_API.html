@@ -88,6 +88,9 @@
         100%   {opacity: 1;}
          }
 
+     
+
+
         .isDone {
             animation: cssAnimation 0s 5s forwards;
             visibility: hidden;
@@ -116,8 +119,8 @@
         display: inline-block;
         opacity : 0.7;
         position: absolute; 
-        left: 300px;
-        top: 220px;
+        left: 370px;
+        top: 250px;
         animation: cssAnimation1 0s 7s forwards,shadow-pulse 1s infinite;
         visibility: hidden;
         }
@@ -130,7 +133,7 @@
         display: inline-block;
         opacity : 0.7;
         position: absolute; 
-        left: 480px;
+        left: 620px;
         top: 180px;
         animation: cssAnimation1 0s 7s forwards,shadow-pulse 1s infinite;
         visibility: hidden;
@@ -144,8 +147,8 @@
         display: inline-block;
         opacity : 0.7;
         position: absolute; 
-        left: 350px;
-        top: 320px;
+        left: 400px;
+        top: 400px;
         animation: cssAnimation1 0s 7s forwards, shadow-pulse 1s infinite;
         visibility: hidden;
         }
@@ -170,8 +173,8 @@
 
          .meter1 { 
             height: 10px;  /* Can be anything */
-            top: 180px;
-            left: 625px;
+            top: 205px;
+            left: 776px;
             position: absolute;
             background: #A3A1FB;
             -moz-border-radius: 25px;
@@ -185,8 +188,8 @@
 
             .meter2 { 
             height: 10px;  /* Can be anything */
-            top: 265px;
-            left: 625px;
+            top: 310px;
+            left: 776px;
             position: absolute;
             background:#5EE2A0;
             -moz-border-radius: 25px;
@@ -200,8 +203,8 @@
 
             .meter3 { 
             height: 10px;  /* Can be anything */
-            top: 350px;
-            left: 625px;
+            top: 415px;
+            left: 776px;
             position: absolute;
             background: #FF6565;
             -moz-border-radius: 25px;
@@ -215,8 +218,8 @@
 
             .meter4 { 
             height: 10px;  /* Can be anything */
-            top: 445px;
-            left: 625px;
+            top: 520px;
+            left: 776px;
             position: absolute;
             background: #FEC163;
             -moz-border-radius: 25px;
@@ -268,15 +271,15 @@
                 0% { width: 0; }
                 10% { width: 0%; }
                 40% { width: 0%; }
-                50% { width: 1%; }
-                55% { width: 3%; }
-                60% { width: 6%; }
-                65% { width: 9%; }
-                70% { width: 11%; }
-                75% { width: 14%; }
-                80% { width: 16%; }
-                85% { width: 18%; }
-                90% { width: 20%; }
+                50% { width: 2%; }
+                55% { width: 4%; }
+                60% { width: 7%; }
+                65% { width: 10%; }
+                70% { width: 13%; }
+                75% { width: 15%; }
+                80% { width: 17%; }
+                85% { width: 19%; }
+                90% { width: 21%; }
                 95% { width: 23%; }
                 100% { width: 25%; }
             }
@@ -384,7 +387,8 @@
             <!-- USA MAP -->
             <div class = "usamap">
 
-              <img src= "{{ url_for('static', filename='map graphic.png')}}"  height = "500px" width = "1000px">  
+              <img src= "{{ url_for('static', filename='map graphic.png')}}"  height = "600px" width = "1600px">  
+               
 
                   <!-- Circles -->
                 <span class ="dot1"></span>
@@ -409,7 +413,7 @@
 
             </div>
  
-
+  
 
             <!-- H1-->
             <div class = "isDone">
