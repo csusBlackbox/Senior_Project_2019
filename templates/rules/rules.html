@@ -157,41 +157,74 @@
 									str1 = global_antecedents_array[i];	// get the element at i position
 									str2 = global_consequents_array[i];
 									str3 = global_confidence_array[i];
-									final_string += "Rule " + (i+1) + ". Given that ";
+									final_string += "Rule " + (i+1) + ". We are ";
 
+									var pointNum = str3.substring(2,4);
+
+									final_string += pointNum +  "% confident that  if a given ";
+									
+									
+									
+									
 									if(str1.includes(",")){			// if there is comma, indicating there is settlement type and specialty
 										//alert("Found a comma " + str1 + i);
 										a_chars = str1.split(',');		//split the string
 										//first part of string
 										a_chars[0] = a_chars[0].replace('[', '');	// removes first bracket
-										a_chars[0] = a_chars[0].replace('_', '');
+										a_chars[0] = a_chars[0].replace('_', ' ');
 										a_chars[0] = a_chars[0].replace(']', '');	// removes second bracket
 										a_chars[0] = a_chars[0].replace('-', ' is ');	// replaces '-' with 'is'
+										a_chars[0] = a_chars[0].slice(1,-1);
+										var index_end = a_chars[0].length - 4;
+										a_chars[0] = a_chars[0].substring(4, index_end);
 
 										//second part of string
 										a_chars[1] = a_chars[1].replace('[', '');	// removes first bracket
 										a_chars[1] = a_chars[1].replace(']', '');	// removes second bracket
-										a_chars[1] = a_chars[1].replace('_', '');
+										a_chars[1] = a_chars[1].replace('_', ' ');
 										a_chars[1] = a_chars[1].replace('-', ' is ');	// replaces '-' with 'is'
+										a_chars[1] = a_chars[1].slice(1,-1);
+										index_end = a_chars[1].length - 4;
+										a_chars[1] = a_chars[1].substring(5, index_end);
 
-										final_string += a_chars[0] + " and " +  a_chars[1];
+										final_string += a_chars[0] + " and " +  a_chars[1] + " ";
 									} else{
 										//alert("No comma "+ str1 + i);
 										str1 = str1.replace('[', '');	// removes first bracket
 										str1 = str1.replace(']', '');	// removes second bracket
 										str1 = str1.replace('-', ' is ');	// replaces '-' with 'is'
+										str1 = str1.slice(1,-1);
+										var index_end = str1.length - 4;
+										str1 = str1.substring(4, index_end);
+											
 										final_string += str1 + " " ;
 									}
 
+									// remove unnecessay characters from the string
 									str2 = str2.replace('[', '');
 									str2 = str2.replace("'", '');
 									str2 = str2.replace(']', '');
 									str2 = str2.replace('-', ' is ');
-
-									var pointNum = str3.substring(2,4);
-
-									final_string += " we are " + pointNum +  "% confident that ";
-									final_string += str2 + "<br>";
+									
+									//remove ticks (') from start and end of string
+									str2 = str2.slice(1,-1);
+									str2 = str2.substring(4,15);
+									
+									//replace M with Male and F with Femal
+									str2 = str2.replace('F', "Female");
+									str2 = str2.replace('M', "Male");
+									
+									/*
+									if(str2.includes("F")){
+										alert("Female)
+										//str2 = str2.replace('F', "Female");
+									} else if(str2.includes("M"){
+										alert("Male")
+										//str2 = str2.replace('M', "Male");
+									}
+ */
+									
+									final_string += "then that Doctor's " + str2 + ".<br>";
 
 								}
 
