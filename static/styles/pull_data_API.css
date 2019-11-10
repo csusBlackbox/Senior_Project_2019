@@ -196,6 +196,7 @@
             padding: 10px;
             box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
             animation: cssAnimation1 0s 7s forwards, expandWidth4 13s infinite;
+            animation-iteration-count: 1;
             visibility: hidden; 
             }
 
