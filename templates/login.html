@@ -120,7 +120,7 @@ span.psw {
    
     <h2>P-CARE Login</h2>
 
-    <form action="/dashboard" method="post">
+    <form action="" method="post">
       <div class="imgcontainer">
         <img src="{{ url_for('static', filename='login_avatar.png')}}" alt="Avatar" class="avatar">
         <!-- Avatar image was downloaded from this link: https://www.w3schools.com/howto/howto_css_image_overlay_icon.asp-->
@@ -128,15 +128,19 @@ span.psw {
 
       <div class="container">
         <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" placeholder="Enter username" name="username" value="{{request.form.username}}" required>
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Enter Password" name="password" value="{{request.form.password}}" required>
             
-        <button type="submit">Login</button>
+        <button type="submit" value = "Login">Login</button>
         <label>
           <input type="checkbox" checked="checked" name="HIPAA"> I comply with HIPAA...
         </label>
+		
+		{% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
       </div>
 
     </form>
