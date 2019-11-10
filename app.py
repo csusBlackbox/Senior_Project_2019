@@ -78,6 +78,10 @@ from sklearn.feature_extraction.text import TfidfTransformer
 
 
 @app.route('/')
+@app.route('/login')
+def login_page():
+	return render_template('login.html')
+
 @app.route('/dashboard')
 def homepage():
     return render_template('index.html')
