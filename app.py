@@ -73,8 +73,8 @@ from sklearn.feature_extraction.text import TfidfTransformer
 
 
 @app.route('/')
-def homepage():
-	return render_template('index.html')
+def landingpage():
+	return render_template('landing.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -84,8 +84,13 @@ def login():
 		if request.form['username'] != 'admin' or request.form['password'] != 'admin':
 			error = 'Invalid Credentials. Please try again.'
 		else:
-			return redirect(url_for('homepage'))
+			return redirect(url_for('index_page'))
 	return render_template('login.html', error=error)
+	
+	
+@app.route('/index')
+def index_page():
+	return render_template('index.html')
 	
 @app.route('/analyze_data')
 def rundata_click():
