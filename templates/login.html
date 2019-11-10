@@ -99,6 +99,12 @@ span.psw {
   }
 }
 
+.iconsrc{
+  font-size: 10px;
+  opacity: 10%;
+  color: white;
+}
+
 
 </style>
 
@@ -118,6 +124,7 @@ span.psw {
     <form action="" method="post">
       <div class="imgcontainer">
         <img src="{{ url_for('static', filename='login_avatar.png')}}" alt="Avatar" class="avatar">
+        <div class = "iconsrc">Icons made by <a href="https://www.flaticon.com/authors/popcorns-arts" title="Icon Pond">Icon Pond</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
         <!-- Avatar image was downloaded from this link: https://www.w3schools.com/howto/howto_css_image_overlay_icon.asp-->
       </div>
 
@@ -128,11 +135,7 @@ span.psw {
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="password" value="{{request.form.password}}" required>
             
-<<<<<<< HEAD
-        <button type="submit" value = "Login">Login</button>
-=======
         <button type="submit"><b>Login</b></button>
->>>>>>> 282038877f69126008759b198d469c5958d26e8b
         <label>
           <input type="checkbox" checked="checked" name="HIPAA" required > I comply with HIPAA...
         </label>
