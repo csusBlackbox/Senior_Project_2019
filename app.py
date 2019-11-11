@@ -4,7 +4,7 @@ app = Flask(__name__)
 ###
 import requests 
 import csv
-from credentials import credentials_array
+
 #import function_template
 
 from pandas import DataFrame
