@@ -1,6 +1,6 @@
 TODO:
 
 11-7-19
-- login page
+- login page			    = DONE
 - tool tips (menu items and graphs) = DONE
 - graph observations 
