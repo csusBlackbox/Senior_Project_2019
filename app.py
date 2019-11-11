@@ -4,6 +4,7 @@ app = Flask(__name__)
 ###
 import requests 
 import csv
+from credentials import credentials_array
 #import function_template
 
 from pandas import DataFrame
@@ -76,21 +77,36 @@ from sklearn.feature_extraction.text import TfidfTransformer
 def landingpage():
 	return render_template('landing.html')
 
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-	error = None
-	if request.method == 'POST':
-		if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-			error = 'Invalid Credentials. Please try again.'
-		else:
-			return redirect(url_for('index_page'))
-	return render_template('login.html', error=error)
-	
 	
 @app.route('/index')
 def index_page():
 	return render_template('index.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+	user_name_array = ["test1","test2"]
+	password_array = ["user1","user2"]
+	error = None
+	if request.method == 'POST':
+		if(request.form['username'] in user_name_array):	#if username in array
+			temp_index = user_name_array.index(request.form['username'])	#get index of username
+			#check if password in passowrd array and at same index of username
+			if((request.form['password'] in password_array) and password_array.index(request.form['password']) == temp_index):
+				return redirect(url_for('index_page'))
+				#if password not in password array
+			elif (request.form['password'] not in password_array): 
+				error = 'Invalid Credentials. Please try again'
+				#can not mixmatch credentials
+			if((request.form['password'] in password_array) and password_array.index(request.form['password']) != temp_index):
+				error = 'Invalid Credentials. Please try again'
+		# if username not in username_array
+		else:
+			error = 'Invalid Credentials. Please try again'
+
+	return render_template('login.html', error=error)
+
+
 	
 @app.route('/analyze_data')
 def rundata_click():
