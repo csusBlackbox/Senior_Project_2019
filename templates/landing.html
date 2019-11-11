@@ -32,6 +32,52 @@
 
 </head>
 
+<style>
+
+.landing_graphic{
+    position:absolute;  
+    top: 100px;
+    left: 200px;
+}
+
+
+
+.button {
+  background-color: blueviolet; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  position:absolute;  
+    top: 615px;
+    left: 865px;
+}
+
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid blueviolet;
+
+}
+
+.button1:hover {
+  background-color: blueviolet;
+  color: white;
+
+}
+
+
+
+</style>
+
 <body>
     <div class="wrapper">
         <div class="sidebar" data-image="{{ url_for('static',filename='styles/sidebar-5.jpg')}}">
@@ -50,14 +96,28 @@
             </div>
         </div>
         <div class="main-panel">
-           
-            <!-- End Navbar -->
-            <div class="content">
-                <div class="container-fluid">
-				 
-                    
+
+                <div class="content">
+                        <div class="container-fluid">
+                         <div class="col-md-14">
+
+            
+                                    <div class = "landing_graphic">
+                                        <img src="{{ url_for('static', filename='landing_graphic.png')}}" height = "608px" width = "1015px">
+                                    </div>
+
+                                    <div class = "gsbutton">
+                                      <!-- <button type="button" class="btn btn-primary btn-md"  onclick="myFunction()" >Get Started!</button>   --> 
+                                        
+                                    </div>
+
+                                    <button class="button button1">Get Started</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            <!-- End Navbar -->
+        
+
             <footer class="footer">
                 <div class="container-fluid">
                     <nav>
