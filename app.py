@@ -1,11 +1,12 @@
+
+#
+
 from flask import Flask, render_template, redirect, url_for, request
 app = Flask(__name__)
 
 ###
 import requests 
 import csv
-
-#import function_template
 
 from pandas import DataFrame
 import matplotlib.pyplot as plt
@@ -28,12 +29,6 @@ import collections
 from sklearn.metrics import f1_score
 from sklearn import tree
 
-
-
-
-
-
-
 from collections import Counter
 from colour import Color
 import json
@@ -52,24 +47,6 @@ from sklearn.feature_extraction.text import TfidfTransformer
 ####
 
 
-
-
-
-#region done
-#gender done
-#specialty done
-#settlement type done
-#years practice done
-
-
-#gender vs specialty  // specialty vs gender  done
-#gender vs settlement // settlement vs gender done
-#gender vs region  	 // region vs gender  done  
-#gender vs years		// years vs gender	done	
-	
-#region vs settlement 	// setttlnent vs region 	done
-
-#settlement vs specialty // specialty vs settlement done
 	
 
 
@@ -79,6 +56,7 @@ def landingpage():
 
 	
 @app.route('/index')
+@app.route('/dashboard')
 def index_page():
 	return render_template('index.html')
 
@@ -189,17 +167,12 @@ def gender_specialty_graph():
 	
 @app.route('/gender_vs_settlement')	
 def gender_settlement_graph(): 
-
-	
-	
-	
 	
 	def increase_luminance(color_str, multiplier=0):
 		c = Color(color_str)
 		lum = 0.8 - np.repeat(0.1, multiplier).sum()
 		c.luminance = lum
 		return {'color': str(c)}
-
 
 	def target_mosaic(cat1, cat2, figsize=(18, 4)):
 		xtab = pd.crosstab(cat1, cat2).unstack()
