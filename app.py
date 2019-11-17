@@ -54,6 +54,11 @@ from sklearn.feature_extraction.text import TfidfTransformer
 @app.route('/landing')
 def landingpage():
 	return render_template('landing.html')
+	
+	
+@app.route('/terms')
+def termspage():
+	return render_template('terms.html')
 
 	
 @app.route('/index')
