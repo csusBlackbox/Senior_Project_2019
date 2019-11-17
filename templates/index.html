@@ -101,8 +101,15 @@
                 <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/dashboard"> Dashboard </a>
-                    <a class="navbar-logout" href="/landing"> Logout 
-                    <img href="/landing"id = "logout" src= "{{ url_for('static', filename='logout.svg')}}" height = "16px" width = "16px" > </a>
+					<p>Log-out
+						<a href="/landing">
+						  <span class="glyphicon glyphicon-log-out"></span>
+						</a>
+					  </p>
+					
+					
+                    <!--a class="navbar-logout" href="/landing"> Logout 
+                    <img href="/landing"id = "logout" src= "{{ url_for('static', filename='logout.svg')}}" height = "16px" width = "16px" > </a-->
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
