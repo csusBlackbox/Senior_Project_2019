@@ -1,8 +1,8 @@
 TODO:
 
 11-7-19
-- login page			    = DONE
-- tool tips (menu items and graphs) = DONE
+- login page			    = --------------------------------------------------------------------------> DONE
+- tool tips (menu items and graphs) = --------------------------------------------------------------------------> DONE
 - graph observations 
 
 
@@ -18,8 +18,16 @@ TODO:
   	issues : 
          	break down each ui components.  
          	where to go if have ui issue in the code. 
+ 
 
-- sunday finsih/clean all the code and start documentation.    
+- HIPPA href to website ----------------------------------------------------------------------------------------> DONE
+
+- background on login page - redo 
+
+- logout button - takes them to onboarding page. ---------------------------------------------------------------> DONE 
+
+- sunday finsih/clean all the code and start documentation.  
 
 
+***
 Dec 3 - Everything officially done 

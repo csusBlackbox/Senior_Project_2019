@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+	
+</head>
+
 <style>
 body, html {
   height: 100%;
@@ -105,19 +114,19 @@ span.psw {
   color: white;
 }
 
-
-
 </style>
 
 
 <body> 
 
-
+  <!-- adding background image with blur -->
   <div class="bg-image">
-    <!--img src= "{{ url_for('static', filename='index_background_image.png')}}"  height = "800px" width = "1800px">  -->
+    
   </div>
 
 
+
+	<!-- login area -->
   <div class="bg-text">
    
     <h2>P-CARE Login</h2>
@@ -139,26 +148,19 @@ span.psw {
             
         <button type="submit"><b>Login</b></button>
 
+		<!-- including terms and condition and link reference to HIPAA,  -->
         <label>
-
           <input type="checkbox"  name="HIPAA" required > I comply with <a href = "https://www.hhs.gov/hipaa/index.html" target="_blank">HIPAA</a> <a href = "/terms" target="_blank"> Terms and Condition</a>
 		  </label> 
 	
 
-        		
+        	<!-- returns if user enters wrong credentials -->	
 		{% if error %}
         <p class="error"><strong>Error:</strong> {{ error }}
       {% endif %}
       </div>
-
     </form>
-
-
   </div>
-
-
-
-
 </body>
 
 
