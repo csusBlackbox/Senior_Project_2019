@@ -4,3 +4,22 @@ TODO:
 - login page			    = DONE
 - tool tips (menu items and graphs) = DONE
 - graph observations 
+
+
+11-14-19 
+- user manual : 
+	how to install.  run executable. [ (download zip file folder) (use the word node. ask micheal) ]
+        set up manual explaining functionality.  
+
+- maintence manual : 
+	front end.  talks about code strcutue.  like code overview. buckley website 
+        user manual .  section for each classifirer.  
+
+  	issues : 
+         	break down each ui components.  
+         	where to go if have ui issue in the code. 
+
+- sunday finsih/clean all the code and start documentation.    
+
+
+Dec 3 - Everything officially done 
