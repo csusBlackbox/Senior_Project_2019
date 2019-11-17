@@ -27,6 +27,10 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <link href= "{{ url_for('static',filename='styles/bootstrap.min.css')}}" rel="stylesheet" />
     <link href= "{{ url_for('static',filename='styles/light-bootstrap-dashboard.css')}} " rel="stylesheet" />
 
@@ -41,6 +45,20 @@
 	top: 10px;
 	left: 1500px;
 	color: #888888;
+}
+
+#logout{
+    position: absolute;
+	top: -5px;
+	left: 1500px;
+}
+
+.btn{
+    background-color: blueviolet;
+    color: white;
+    border-color: black;
+
+
 }
 
 </style>
@@ -101,8 +119,12 @@
                 <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/dashboard"> Dashboard </a>
-                    <a class="navbar-logout" href="/landing"> Logout 
-                    <img href="/landing"id = "logout" src= "{{ url_for('static', filename='logout.svg')}}" height = "16px" width = "16px" > </a>
+                    <a id="logout" href="/landing" class="btn btn-info btn-md"> Log out
+                        <span class="glyphicon glyphicon-log-out"></span> 
+                      </a>
+
+                     <!--i class = "fas fa -sign-out-alt"></i> <a class="navbar-logout" href="/landing"> Logout </a-->
+
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
