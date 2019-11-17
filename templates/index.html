@@ -56,7 +56,7 @@
 .btn{
     background-color: blueviolet;
     color: white;
-    border-color: black;
+    border-color: white;
 
 
 }
@@ -67,11 +67,7 @@
 <body>
     <div class="wrapper">
         <div class="sidebar" data-image="{{ url_for('static',filename='styles/sidebar-5.jpg')}}">
-            <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
+ 
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a class="simple-text">
@@ -119,24 +115,16 @@
                 <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/dashboard"> Dashboard </a>
-<<<<<<< HEAD
-					<p>Log-out
-						<a href="/landing">
-						  <span class="glyphicon glyphicon-log-out"></span>
-						</a>
-					  </p>
-					
-					
-                    <!--a class="navbar-logout" href="/landing"> Logout 
-                    <img href="/landing"id = "logout" src= "{{ url_for('static', filename='logout.svg')}}" height = "16px" width = "16px" > </a-->
-=======
+
+				
+
                     <a id="logout" href="/landing" class="btn btn-info btn-md"> Log out
                         <span class="glyphicon glyphicon-log-out"></span> 
                       </a>
 
-                     <!--i class = "fas fa -sign-out-alt"></i> <a class="navbar-logout" href="/landing"> Logout </a-->
+                 
 
->>>>>>> 98beef704b4f89abb6219e056b7c132bb73a9f24
+
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
