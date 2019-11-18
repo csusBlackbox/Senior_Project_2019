@@ -24,7 +24,7 @@ TODO:
 
 - background on login page -                                                                                      redo 
 
-- graph observations =   											  Nicole/ Jen 
+- graph observations ---------------------------------------------------------------------------------------------DONE
 
 - logout button - takes them to onboarding page. ---------------------------------------------------------------> DONE 
 
