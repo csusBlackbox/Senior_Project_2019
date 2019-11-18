@@ -47,6 +47,21 @@ p{
     border-color: white;
 }
 
+#genrules{
+  position: absolute;
+  top: 200px;
+  left:700px;
+
+}
+
+#note{
+  font-style: italic;
+  font-weight: normal;
+  border-style: solid;
+  border-width: medium;
+  border-color: blueviolet;
+}
+
 </style>
 
 <body>
@@ -112,9 +127,21 @@ p{
             <div class="content">
                 <div class="container-fluid">
 					<div class="col-md-14">
-				 
-						<button type="button" class="btn btn-primary btn-lg"  onclick="myFunction()" >Generate Rules</button>
-						
+            
+        
+
+            <p id = "note"> 
+              Note* : This page will generate association rules based off of our data. These rules will find correlations between data attributes and provide a means for future predictions.
+
+            </p>
+            <br>
+            <br>
+            <br>
+            <br>
+
+						<button type="button" id = "genrules" class="btn btn-primary btn-lg"  onclick="myFunction()" >Generate Rules</button>
+            
+            <br> <br> <br><br>
 						
 						<p id="Rules"></p>
 						
