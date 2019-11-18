@@ -3,7 +3,7 @@ TODO:
 11-7-19
 - login page			    = --------------------------------------------------------------------------> DONE
 - tool tips (menu items and graphs) = --------------------------------------------------------------------------> DONE
-- graph observations 
+
 
 
 11-14-19 
@@ -22,11 +22,13 @@ TODO:
 
 - HIPPA href to website ----------------------------------------------------------------------------------------> DONE
 
-- background on login page - redo 
+- background on login page -                                                                                      redo 
+
+- graph observations =   											  Nicole/ Jen 
 
 - logout button - takes them to onboarding page. ---------------------------------------------------------------> DONE 
 
-- sunday finsih/clean all the code and start documentation.  
+- sunday finsih UI / Clean all the code and start documentation.  
 
 
 ***
