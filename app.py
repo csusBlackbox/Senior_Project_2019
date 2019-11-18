@@ -53,6 +53,33 @@ from sklearn.feature_extraction.text import TfidfTransformer
 @app.route('/')
 @app.route('/landing')
 def landingpage():
+	if os.path.exists("static/gender.svg"):
+		os.remove("static/gender.svg")
+	if os.path.exists("static/gender_vs_region.svg"):
+		os.remove("static/gender_vs_region.svg")
+	if os.path.exists("static/gender_vs_settlement.svg"):
+		os.remove("static/gender_vs_settlement.svg")
+	if os.path.exists("static/gender_vs_specialty.svg"):
+		os.remove("static/gender_vs_specialty.svg")
+	if os.path.exists("static/gender_vs_years.svg"):
+		os.remove("static/gender_vs_years.svg")
+		
+	if os.path.exists("static/region.svg"):
+		os.remove("static/region.svg")
+	if os.path.exists("static/region_vs_settlement.svg"):
+		os.remove("static/region_vs_settlement.svg")
+	
+	if os.path.exists("static/settlement_type.svg"):
+		os.remove("static/settlement_type.svg")
+	if os.path.exists("static/settlement_vs_specialty.svg"):
+		os.remove("static/settlement_vs_specialty.svg")
+	
+	if os.path.exists("static/specialty.svg"):
+		os.remove("static/specialty.svg")
+	
+	if os.path.exists("static/years_practice.svg"):
+		os.remove("static/years_practice.svg")
+		
 	return render_template('landing.html')
 	
 	

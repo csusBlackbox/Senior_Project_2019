@@ -118,14 +118,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                         
-                        
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-toggle="tooltip" title="Number of years doctor practiced in specialty">
-                                Years Practice </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="/years_practice">Years Practice</a>
-                                        <a class="dropdown-item" href="/gender_vs_years">Years Practice vs Gender</a> 
-                                    </div>
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-toggle="tooltip" title="Doctor's sex (M,F)">
+                                    Gender </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/gender">Gender</a>
+                                            <a class="dropdown-item" href="/gender_vs_years">Gender vs. Years Practive</a>
+                                            <a class="dropdown-item" href="/gender_vs_region">Gender vs. Region</a>
+                                            <a class="dropdown-item" href="/gender_vs_specialty">Gender vs. Specialty</a> 
+                                            <a class="dropdown-item" href="/gender_vs_settlement">Gender vs. Settlement</a> 
+                                        </div>
                             </li>
 
                             <li class="nav-item dropdown">
@@ -133,8 +135,20 @@
                                     Region </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="/region">Region</a>
-                                            <a class="dropdown-item" href="/gender_vs_region">Region vs Gender</a> 
-                                            <a class="dropdown-item" href="/region_vs_settlement">Region vs Settlement</a> 
+                                            <a class="dropdown-item" href="/gender_vs_region">Region vs. Gender</a> 
+                                            <a class="dropdown-item" href="/region_vs_settlement">Region vs. Settlement</a> 
+                                        </div>
+                            </li>
+
+                            
+                            <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-toggle="tooltip" title="Doctor's location x population density">
+                                    Settlement </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/settlement_type">Settlement</a>
+                                            <a class="dropdown-item" href="/gender_vs_settlement">Settlement vs. Gender</a>
+                                            <a class="dropdown-item" href="/region_vs_settlement">Settlement vs. Region</a>
+                                            <a class="dropdown-item" href="/settlement_vs_specialty">Settlement vs. Specialty</a> 
                                         </div>
                             </li>
 
@@ -143,37 +157,24 @@
                                     Specialty </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="/specialty">Specialty</a>
-                                            <a class="dropdown-item" href="/gender_vs_specialty">Specialty vs Gender</a>
-                                            <a class="dropdown-item" href="/settlement_vs_specialty">Specialty vs Settlement</a> 
+                                            <a class="dropdown-item" href="/gender_vs_specialty">Specialty vs. Gender</a>
+                                            <a class="dropdown-item" href="/settlement_vs_specialty">Specialty vs. Settlement</a> 
                                         </div>
                             </li>
 
+                        
                             <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-toggle="tooltip" title="Doctor's location x population density">
-                                    Settlement </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="/settlement_type">Settlement</a>
-                                            <a class="dropdown-item" href="/gender_vs_settlement">Settlement vs Gender</a>
-                                            <a class="dropdown-item" href="/region_vs_settlement">Settlement vs Region</a>
-                                            <a class="dropdown-item" href="/settlement_vs_specialty">Settlement vs Specialty</a> 
-                                        </div>
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-toggle="tooltip" title="Number of years doctor practiced in specialty">
+                                Years of Practice </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/years_practice">Years of Practice</a>
+                                        <a class="dropdown-item" href="/gender_vs_years">Years of Practice vs. Gender</a> 
+                                    </div>
                             </li>
 
-                            <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-toggle="tooltip" title="Doctor's sex (M,F)">
-                                    Gender </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="/gender">Gender</a>
-                                            <a class="dropdown-item" href="/gender_vs_years">Gender vs Years Practive</a>
-                                            <a class="dropdown-item" href="/gender_vs_region">Gender vs Region</a>
-                                            <a class="dropdown-item" href="/gender_vs_specialty">Gender vs Specialty</a> 
-                                            <a class="dropdown-item" href="/gender_vs_settlement">Gender vs Settlement</a> 
-                                        </div>
-                            </li>
                     
                         </ul>
                 </div>
-
             </nav>
                 
 			
@@ -187,7 +188,7 @@
                         <div class="col-md-14">
                             <div class="card ">
                                 <div class="card-header ">
-                                    <h4 class="card-title" >Specialty vs Settlement</h4>
+                                    <h4 class="card-title" >Specialty vs. Settlement</h4>
                                    
                                 </div>
                                 <div class="card-body ">
@@ -200,7 +201,9 @@
                                </div>
                                
                                <p>Note* Click the image to zoom in and view the image in full screen</p>
-                                
+                               <p>This mosaic plots the relationship between settlement types (urban or non-urban) and the top 7 specialties.
+                                    In accordance with the Settlement Distribution graph, there is a bias towards nonurban settlements in this data. Despite the bias, 
+                                    the top 7 specialties seem to be well distributed between urab and non-urban settlement.</p>
                             </div>
                         </div>
                     </div>
