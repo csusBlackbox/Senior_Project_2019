@@ -59,6 +59,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  width: 150px;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -69,6 +70,7 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  width: 150px;
 }
 
 /* Links inside the dropdown */
@@ -78,25 +80,32 @@
   text-decoration: none;
   display: block;
   font-size: 18px;
+  width: 150px;
 }
 
 /* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    width: 150px;
+}
+
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
+  width: 150px;
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
+  width: 150px;
 }
 
 /* End of Drop Down Styling*/
 
 /* Start of Loader Styling*/
-.loader2 {
+.loader_test {
         border: 16px solid #f3f3f3; /* Light grey */
         border-top: 16px solid #3498db; /* Blue */
         border-radius: 50%;
@@ -239,7 +248,7 @@
                             <div class="col-md-8">
                                     <div class="card ">
                                      
-                                            <button type="button" id = "demobutton" class="btn btn-primary btn-lg"  onclick="myFunction()" >Demo</button>
+                                            <button type="button" id = "demobutton" class="btn btn-primary btn-lg"  onclick="loader_anime()" >Demo</button>
                                             
                                             <br>
 
@@ -264,7 +273,7 @@
                                             </div>
 
                                         
-                                             <div class="loader2">
+                                             <div id="loader_2">
 
                                                 </div>
                                     
@@ -323,13 +332,17 @@
         demo.showNotification();
     });
 </script>
+<script>
 
-<script>   
-    function myFunction(){
-        /*document.getElementById("hi").innerHTML = "SUP";  */
-        document.getElementsByClassName("loader2").value;
+    function loader_anime(){
+        var targetElement = document.getElementById("loader_2");
+        targetElement.className = "loader_test";
 
     }
+
+
 </script>
+
+
 
 </html>
