@@ -122,15 +122,17 @@ def login():
 
 @app.route('/drug_analyze')
 def drug_analyze_click():
-    # Pie chart, where the slices will be ordered and plotted counter-clockwise:
-    labels = 'Top 20 Drugs', 'Other'
-    sizes = [30, 70]
-    explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
-    colors = ['mediumspringgreen', 'mediumslateblue']
-    fig1, ax1 = plt.subplots()
-    ax1.pie(sizes, explode=explode, labels=labels, colors= colors, autopct='%1.1f%%', shadow=True, startangle=90)
-    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-    plt.savefig('static/pie_chart.svg')
+    if not os.path.exists("static/pie_chart.svg"):
+        #if chart elready exists do nothing else create one 
+        # Pie chart, where the slices will be ordered and plotted counter-clockwise:
+        labels = 'Top 20 Drugs', 'Other'
+        sizes = [30, 70]
+        explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+        colors = ['mediumspringgreen', 'mediumslateblue']
+        fig1, ax1 = plt.subplots()
+        ax1.pie(sizes, explode=explode, labels=labels, colors= colors, autopct='%1.1f%%', shadow=True, startangle=90)
+        ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+        plt.savefig('static/pie_chart.svg')
     return render_template('graph_files/drug_analyze.html')
 	
 @app.route('/analyze_data')
@@ -157,6 +159,9 @@ def drugs_click():
     ax1.pie(sizes, explode=explode, labels=labels, colors= colors, autopct='%1.1f%%', shadow=True, startangle=90)
     ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
     plt.savefig('static/pie_chart.svg')
+    
+    
+    
     return render_template('drugs.html')
 
 @app.route('/gender')
