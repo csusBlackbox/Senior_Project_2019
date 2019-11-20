@@ -185,12 +185,11 @@ def gender_specialty_graph():
 		fig.set_figheight(figheight)
 		fig.savefig('static/gender_vs_specialty.svg')
 		
-	ys = df
 	cat2='gender'
-	specialty_mincount=1500
-	specialty_maxcount=None
-	cat2 = data2[cat2]
-	specialty = data2['specialty']
+	specialty_mincount=8000
+	specialty_maxcount=50000
+	cat2 = df[cat2]
+	specialty = df['specialty']
 	dist = specialty.value_counts()
 	if specialty_maxcount == None:
 		specialty_maxcount = dist.max()
@@ -337,8 +336,8 @@ def gender_years_graph():
 		
 	#ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
 	cat2='gender'
-	years_mincount=400
-	years_maxcount=None
+	years_mincount=7000
+	years_maxcount=120000
 	cat2 = data2[cat2]
 	years = data2['years_practicing']
 	dist = years.value_counts()
@@ -459,8 +458,8 @@ def settlement_specialty_graph():
 		
 	
 	cat2='settlement_type'
-	specialty_mincount=1500
-	specialty_maxcount=None
+	specialty_mincount=8000
+	specialty_maxcount=50000
 	cat2 = data2[cat2]
 	specialty = data2['specialty']
 	dist = specialty.value_counts()
