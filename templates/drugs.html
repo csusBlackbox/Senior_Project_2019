@@ -35,6 +35,97 @@
     color: white;
     border-color: white;
 }
+
+
+#demobutton{
+    width: 150px ;
+}
+
+
+/* Start of Drop Down Styling*/
+
+/* Style The Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  width: 150px; 
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 18px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+/* End of Drop Down Styling*/
+
+/* Start of Loader Styling*/
+.loader2 {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        left: 35%;
+        top: 35%;
+        animation: spin 5s  forwards;
+       
+        }
+        @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+        0%   {opacity: 1;}
+        90%  {opacity: 1;}
+        100% {opacity: 0;}
+        }
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        0%   {opacity: 1;}
+        90%  {opacity: 1;}
+        100% {opacity: 0;}
+        }
+/* End of Loader Styling*/
+
+
+
 </style>
 
 
@@ -104,44 +195,94 @@
             </nav>
             </nav>
 
-            
-                
-           
 
-            <!-- USA MAP -->
+            <div class="content">
+                    <div class="container-fluid">
+    
+                        <div class="row">
+                            
+                             
+                            <div class="col-md-4">
+                                <div class="card ">
+                                    <div class="card-header ">
+                                        <h4 class="card-title" >Drug Statistics</h4>
+                                    </div>
+                                   
+                                    <img src= "{{ url_for('static', filename='pie_temp.png')}}"  height = "400px" width = "400px">  
+    
+                                    <p> Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac rhoncus nisl, ac pharetra nulla. Mauris eget tempor ante.
+                                         Donec eleifend aliquam erat facilisis venenatis. Mauris ac ullamcorper leo, 
+                                        lacinia gravida justo. Maecenas libero odio, </p>
+                                    
+                                    <p>
+                                        1. xxx
+                                        <br>
+                                        2. xxx
+                                        <br> 
+                                        3. xxx
+                                        <br>
+                                        4. xxx
+                                        <br>
+                                        5. xxx
+                                        <br>
+                                        6. xxx
+                                        <br>
+                                        7. xxx
+                                        <br>
+                                    </p>
+                                    
+          
+                                    
+                                </div>
+                            </div>
+    
+                            <div class="col-md-8">
+                                    <div class="card ">
+                                     
+                                            <button type="button" id = "demobutton" class="btn btn-primary btn-lg"  onclick="myFunction()" >Demo</button>
+                                            
+                                            <br>
+
+                                            <div class="dropdown">
+                                                    <button class="dropbtn">Drug 1</button>
+                                                    <div class="dropdown-content">
+                                                      <a href="#">Drug 1</a>
+                                                      <a href="#">Drug 2</a>
+                                                      <a href="#">Drug 3</a>
+                                                    </div>
+                                            </div>
+
+                                            <br> 
+
+                                            <div class="dropdown">
+                                                    <button class="dropbtn">Drug 2</button>
+                                                    <div class="dropdown-content">
+                                                      <a href="#">Drug 1</a>
+                                                      <a href="#">Drug 2</a>
+                                                      <a href="#">Drug 3</a>
+                                                    </div>
+                                            </div>
+
+                                        
+                                             <div class="loader2">
+
+                                                </div>
+                                    
+                                        
+                                    </div>
+                                </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
 
 
-
-            
- 
-             <!-- pargraph -->
-            <p>DRUGSSSS YAY !!! :)</p>
-
-   
-            
-
-
-            
-
-        
-            
-            <div class="loader">
-
-            </div>
-
-  
-
-
-
+<p id = "hi"> </p>
 
 
             <!-- End Navbar -->
-            <div class="content">
-                <div class="container-fluid">
-				 
-                        
-                </div>
-            </div>
+  
             <footer class="footer">
                 <div class="container-fluid">
                     <nav>
@@ -181,6 +322,14 @@
         demo.initDashboardPageCharts();
         demo.showNotification();
     });
+</script>
+
+<script>   
+    function myFunction(){
+        /*document.getElementById("hi").innerHTML = "SUP";  */
+        document.getElementsByClassName("loader2").value;
+
+    }
 </script>
 
 </html>
