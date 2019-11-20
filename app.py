@@ -120,7 +120,9 @@ def login():
 
 	return render_template('login.html', error=error)
 
-
+@app.route('/drug_analyze')
+def drug_analyze_click():
+	return render_template('graph_files/drug_analyze.html')
 	
 @app.route('/analyze_data')
 def rundata_click():
@@ -134,6 +136,10 @@ def pulldata_click():
     south = region[0]
     
     return render_template('pull_data_API.html', total_records = total_records, south = south)
+
+@app.route('/drugs')
+def drugs_click():
+    return render_template('drugs.html')
 
 @app.route('/gender')
 def gender_barplot():
