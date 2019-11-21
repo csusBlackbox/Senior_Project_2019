@@ -79,6 +79,7 @@ def landingpage():
 	
 	if os.path.exists("static/years_practice.svg"):
 		os.remove("static/years_practice.svg")
+
 		
 	return render_template('landing.html')
 	
@@ -119,7 +120,18 @@ def login():
 
 @app.route('/drug_analyze')
 def drug_analyze_click():
-	return render_template('graph_files/drug_analyze.html')
+    if not os.path.exists("static/pie_chart.svg"):
+        #if chart elready exists do nothing else create one 
+        # Pie chart, where the slices will be ordered and plotted counter-clockwise:
+        labels = 'Top 20 Drugs', 'Other'
+        sizes = [30, 70]
+        explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+        colors = ['mediumspringgreen', 'mediumslateblue']
+        fig1, ax1 = plt.subplots()
+        ax1.pie(sizes, explode=explode, labels=labels, colors= colors, autopct='%1.1f%%', shadow=True, startangle=90)
+        ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+        plt.savefig('static/pie_chart.svg')
+    return render_template('graph_files/drug_analyze.html')
 	
 @app.route('/analyze_data')
 def rundata_click():
@@ -127,10 +139,30 @@ def rundata_click():
 
 @app.route('/pull_data')
 def pulldata_click():
+<<<<<<< HEAD
     return render_template('pull_data_API.html')
+=======
+    df_drugs = df.drop(['brand_name_rx_count', 'gender', 'generic_rx_count', 'region', 'settlement_type', 'specialty', 'years_practicing'], axis=1)
+    total_records = data2.shape[0]
+    columns = data2.shape[1]
+    
+    return render_template('pull_data_API.html', total_records = total_records, columns = columns)
+>>>>>>> 1979826a0988c2106e4a7556fc6c505c5312e59a
 
 @app.route('/drugs')
 def drugs_click():
+    # Pie chart, where the slices will be ordered and plotted counter-clockwise:
+    labels = 'Top 20 Drugs', 'Other'
+    sizes = [30, 70]
+    explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
+    colors = ['mediumspringgreen', 'mediumslateblue']
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, explode=explode, labels=labels, colors= colors, autopct='%1.1f%%', shadow=True, startangle=90)
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+    plt.savefig('static/pie_chart.svg')
+    
+    
+    
     return render_template('drugs.html')
 
 @app.route('/gender')
@@ -530,17 +562,14 @@ def show_rules():
             df[dummy_name] = dummies[x]
         df.drop(name, axis=1, inplace=True)
     
-    # Read data csv in
-    df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
     # Create subset of data with only a few columns used for association analysis
-    data = df[['gender', 'specialty', 'settlement_type']]
+    data = data2[['gender', 'specialty', 'settlement_type']]
     encode_text_dummy(data, 'gender')
     encode_text_dummy(data, 'specialty')
     encode_text_dummy(data, 'settlement_type')
     #data.head()
     # Get frequent itemsets
     freq_items1 = apriori(data, min_support=0.009, use_colnames=True, verbose=1)
-    freq_items1
     # Get the rules
     rules1 = association_rules(freq_items1, metric="confidence", min_threshold=0.2)
     #rules1
@@ -555,9 +584,10 @@ def show_rules():
     #rules1_results.head()
     #rules1_results['confidence'].values
     # Filter rules based on a relatively high confidence level - 90% 
-    results = rules1_results[rules1_results['confidence'].values >= .9]
+    results = rules1_results[rules1_results['confidence'].values >= .75]
 
     results1 = results['antecedents']
+    
     
 
     antecedents = ([list(x) for x in results1])
@@ -593,7 +623,96 @@ def target_barplot():
 	ax.set_xlim((0, max(counts.values)*1.2))
 	fig.savefig('static/region.svg')
 	return render_template('graph_files/region.html')
+    
+ 
+@app.route('/drug_demo_graph_generation')
+def graph_generate():
+    def encode_text_dummy(df, name):
+        dummies = pd.get_dummies(df[name])
+        for x in dummies.columns:
+            dummy_name = "{}-{}".format(name, x)
+            df[dummy_name] = dummies[x]
+        df.drop(name, axis=1, inplace=True)
 
+    # Convert a Pandas dataframe to the x,y inputs that TensorFlow needs
+    def to_xy(df, target):
+        result = []
+        for x in df.columns:
+            if x != target:
+                result.append(x)
+        # find out the type of the target column. 
+        target_type = df[target].dtypes
+        target_type = target_type[0] if isinstance(target_type, Sequence) else target_type
+        # Encode to int for classification, float otherwise. TensorFlow likes 32 bits.
+        if target_type in (np.int64, np.int32):
+            # Classification
+            dummies = pd.get_dummies(df[target])
+            return df[result].values.astype(np.float32), dummies.values.astype(np.float32)
+        else:
+            # Regression
+            return df[result].values.astype(np.float32), df[target].values.astype(np.float32)
+    dataset_filename = 'data.jsonl'
+    def iter_dataset():
+        with open(dataset_filename, 'rt') as f:
+            for line in f:
+                ex = json.loads(line)
+                yield (ex['cms_prescription_counts'],
+                       ex['provider_variables'])
+
+    def merge_dicts(*dicts: dict):
+        merged_dict = dict()
+        for dictionary in dicts:
+            merged_dict.update(dictionary)
+        return merged_dict
+
+    data = [merge_dicts(x, y) for x, y in iter_dataset()]
+    df = pd.DataFrame(data)
+    df.fillna(0, inplace=True)
+
+    df.drop(columns='gender', inplace=True)
+    df.drop(columns='region', inplace=True)
+    df.drop(columns='settlement_type', inplace=True)
+    df.drop(columns='years_practicing', inplace=True)
+
+    drugName = "specialty-Pulmonary Diagnostics"
+
+    encode_text_dummy(df, 'specialty')
+    # Encode to a 2D matrix for training
+    x,y = to_xy(df, drugName)
+
+    # Split into train/test
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25, random_state=45) 
+
+    #regressor = LinearRegression()
+    regressor = LinearRegression()
+
+    # Fit/train linear regression
+    regressor.fit(x_train,y_train)
+
+    # Predict
+    pred = regressor.predict(x_test)
+
+    # Measure RMSE error.  RMSE is common for regression.
+    score = np.sqrt(metrics.mean_squared_error(pred,y_test))
+    
+    names.remove(drugName)
+
+
+    def report_coef(names,coef,intercept):
+        r = pd.DataFrame( { 'coef': coef, 'positive': coef>0.4  }, index = names )
+        r = r.sort_values(by=['coef'])
+        
+        badRows = r[(r['positive'] == False)].index
+        #badCoef = r[(r['coef'] <= 1.00e-02)].index
+        r.drop(badRows, inplace=True)
+        #r.drop(badCoef, inplace=True)
+        
+        display(r)
+        print("Intercept: {}".format(intercept))
+        r['coef'].plot(kind='barh', color=r['positive'].map({True: 'b', False: 'r'}))
+        
+        
+    report_coef(names, (regressor.coef_ * 1.9), regressor.intercept_)
 
 #if __name__ == '__main__':
 #   app.run(debug=True, use_reloader=True)
