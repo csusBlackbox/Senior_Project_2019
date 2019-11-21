@@ -82,6 +82,7 @@ def landingpage():
 	
 	if os.path.exists("static/years_practice.svg"):
 		os.remove("static/years_practice.svg")
+
 		
 	return render_template('landing.html')
 	
@@ -143,10 +144,9 @@ def rundata_click():
 def pulldata_click():
     df_drugs = df.drop(['brand_name_rx_count', 'gender', 'generic_rx_count', 'region', 'settlement_type', 'specialty', 'years_practicing'], axis=1)
     total_records = data2.shape[0]
-    region = data2['region'].value_counts()
-    south = region[0]
+    columns = data2.shape[1]
     
-    return render_template('pull_data_API.html', total_records = total_records, south = south)
+    return render_template('pull_data_API.html', total_records = total_records, columns = columns)
 
 @app.route('/drugs')
 def drugs_click():
@@ -564,17 +564,14 @@ def show_rules():
             df[dummy_name] = dummies[x]
         df.drop(name, axis=1, inplace=True)
     
-    # Read data csv in
-    df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
     # Create subset of data with only a few columns used for association analysis
-    data = df[['gender', 'specialty', 'settlement_type']]
+    data = data2[['gender', 'specialty', 'settlement_type']]
     encode_text_dummy(data, 'gender')
     encode_text_dummy(data, 'specialty')
     encode_text_dummy(data, 'settlement_type')
     #data.head()
     # Get frequent itemsets
     freq_items1 = apriori(data, min_support=0.009, use_colnames=True, verbose=1)
-    freq_items1
     # Get the rules
     rules1 = association_rules(freq_items1, metric="confidence", min_threshold=0.2)
     #rules1
@@ -589,9 +586,10 @@ def show_rules():
     #rules1_results.head()
     #rules1_results['confidence'].values
     # Filter rules based on a relatively high confidence level - 90% 
-    results = rules1_results[rules1_results['confidence'].values >= .9]
+    results = rules1_results[rules1_results['confidence'].values >= .75]
 
     results1 = results['antecedents']
+    
     
 
     antecedents = ([list(x) for x in results1])
