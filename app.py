@@ -46,8 +46,8 @@ from sklearn.feature_extraction.text import TfidfTransformer
 #import tensorflow as tf
 ####
 
-df = pd.read_csv('fulldata.csv', sep=',', low_memory=False)
-data2 = df[['brand_name_rx_count', 'gender', 'generic_rx_count', 'region', 'settlement_type', 'specialty', 'years_practicing']]
+df #= pd.read_csv('fulldata.csv', sep=',', low_memory=False)
+data2# = df[['brand_name_rx_count', 'gender', 'generic_rx_count', 'region', 'settlement_type', 'specialty', 'years_practicing']]
 
 
 	
@@ -56,32 +56,32 @@ data2 = df[['brand_name_rx_count', 'gender', 'generic_rx_count', 'region', 'sett
 @app.route('/')
 @app.route('/landing')
 def landingpage():
-	if os.path.exists("static/gender.svg"):
-		os.remove("static/gender.svg")
-	if os.path.exists("static/gender_vs_region.svg"):
-		os.remove("static/gender_vs_region.svg")
-	if os.path.exists("static/gender_vs_settlement.svg"):
-		os.remove("static/gender_vs_settlement.svg")
-	if os.path.exists("static/gender_vs_specialty.svg"):
-		os.remove("static/gender_vs_specialty.svg")
-	if os.path.exists("static/gender_vs_years.svg"):
-		os.remove("static/gender_vs_years.svg")
+	# if os.path.exists("static/gender.svg"):
+		# os.remove("static/gender.svg")
+	# if os.path.exists("static/gender_vs_region.svg"):
+		# os.remove("static/gender_vs_region.svg")
+	# if os.path.exists("static/gender_vs_settlement.svg"):
+		# os.remove("static/gender_vs_settlement.svg")
+	# if os.path.exists("static/gender_vs_specialty.svg"):
+		# os.remove("static/gender_vs_specialty.svg")
+	# if os.path.exists("static/gender_vs_years.svg"):
+		# os.remove("static/gender_vs_years.svg")
 		
-	if os.path.exists("static/region.svg"):
-		os.remove("static/region.svg")
-	if os.path.exists("static/region_vs_settlement.svg"):
-		os.remove("static/region_vs_settlement.svg")
+	# if os.path.exists("static/region.svg"):
+		# os.remove("static/region.svg")
+	# if os.path.exists("static/region_vs_settlement.svg"):
+		# os.remove("static/region_vs_settlement.svg")
 	
-	if os.path.exists("static/settlement_type.svg"):
-		os.remove("static/settlement_type.svg")
-	if os.path.exists("static/settlement_vs_specialty.svg"):
-		os.remove("static/settlement_vs_specialty.svg")
+	# if os.path.exists("static/settlement_type.svg"):
+		# os.remove("static/settlement_type.svg")
+	# if os.path.exists("static/settlement_vs_specialty.svg"):
+		# os.remove("static/settlement_vs_specialty.svg")
 	
-	if os.path.exists("static/specialty.svg"):
-		os.remove("static/specialty.svg")
+	# if os.path.exists("static/specialty.svg"):
+		# os.remove("static/specialty.svg")
 	
-	if os.path.exists("static/years_practice.svg"):
-		os.remove("static/years_practice.svg")
+	# if os.path.exists("static/years_practice.svg"):
+		# os.remove("static/years_practice.svg")
 
 		
 	return render_template('landing.html')
@@ -127,7 +127,7 @@ def drug_analyze_click():
         #if chart elready exists do nothing else create one 
         # Pie chart, where the slices will be ordered and plotted counter-clockwise:
         labels = 'Top 20 Drugs', 'Other'
-        sizes = [30, 70]
+        sizes = [33.27, 66.73]
         explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
         colors = ['mediumspringgreen', 'mediumslateblue']
         fig1, ax1 = plt.subplots()
@@ -152,7 +152,7 @@ def pulldata_click():
 def drugs_click():
     # Pie chart, where the slices will be ordered and plotted counter-clockwise:
     labels = 'Top 20 Drugs', 'Other'
-    sizes = [30, 70]
+    sizes = [33.27, 66.73]
     explode = (0.1, 0)  # only "explode" the 2nd slice (i.e. 'Hogs')
     colors = ['mediumspringgreen', 'mediumslateblue']
     fig1, ax1 = plt.subplots()
