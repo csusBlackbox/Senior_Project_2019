@@ -112,7 +112,7 @@
         width: 120px;
         height: 120px;
         position: absolute;
-        left: 35%;
+        left: 45%;
         top: 35%;
         animation: spin 5s  forwards;
        
@@ -133,6 +133,36 @@
         }
 /* End of Loader Styling*/
 
+#postdemo{
+    visibility: hidden;
+
+}
+
+.load_content{
+    animation: apppear 5s forwards; 
+    visibility: visible;
+}
+        @-webkit-keyframes appear {
+        to   { visibility: visible; }
+        0%   {opacity: 0;}
+        90%  {opacity: 1;}
+        100% {opacity: 1;}
+        }
+        @keyframes appear {
+        to   { visibility: visible; }
+        0%   {opacity: 0;}
+        90%  {opacity: 1;}
+        100% {opacity: 1;}
+        }
+
+
+#font_margin{
+    margin-left: 40px;
+    font-size: 18px;
+}
+h3{
+    font-weight: bold;
+}
 
 
 </style>
@@ -175,7 +205,7 @@
                     </li>
                     <li>
                             <a class="nav-link"  href="/drugs" data-toggle="tooltip" title="Predict drugs">
-                                <i class="nc-icon nc-notes"></i>
+                                <i class="nc-icon nc-ambulance"></i>
                                 <p>Drugs</p>
                             </a>
                     </li>
@@ -219,11 +249,13 @@
                                    
                                     <img src= "{{ url_for('static', filename='pie_chart.svg')}}"  >  
     
-                                    <p> Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac rhoncus nisl, ac pharetra nulla. Mauris eget tempor ante.
+                                    <p id = "font_margin"> Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac rhoncus nisl, ac pharetra nulla. Mauris eget tempor ante.
                                          Donec eleifend aliquam erat facilisis venenatis. Mauris ac ullamcorper leo, 
                                         lacinia gravida justo. Maecenas libero odio, </p>
                                     
-                                    <p>
+                                    <p id = "font_margin">
+                                        Top Drugs
+                                        <br>
                                         1. xxx
                                         <br>
                                         2. xxx
@@ -246,43 +278,95 @@
                             </div>
     
                             <div class="col-md-8">
-                                    <div class="card ">
+                                    <div class="row ">
+                                        
+
+                                            <div class="col-md-2">
                                      
-                                            <button type="button" id = "demobutton" class="btn btn-primary btn-lg"  onclick="loader_anime()" >Demo</button>
-                                            
-                                            <br>
+                                               
+                                                    <button type="button" id = "demobutton" class="btn btn-primary btn-lg"  onclick="loader_anime()" >Demo</button>
+                                                    
+                                                    <br>
+                                                    <br>
+                                                    <br>
 
-                                            <div class="dropdown">
-                                                    <button class="dropbtn">Drug 1</button>
-                                                    <div class="dropdown-content">
-                                                      <a href="#">Drug 1</a>
-                                                      <a href="#">Drug 2</a>
-                                                      <a href="#">Drug 3</a>
+                                                    <div class="dropdown">
+                                                            <button class="dropbtn">Drug 1</button>
+                                                            <div class="dropdown-content">
+                                                            <a href="#">Drug 1</a>
+                                                            <a href="#">Drug 2</a>
+                                                            <a href="#">Drug 3</a>
+                                                            </div>
                                                     </div>
+
+                                                    <br> 
+                                                    <br>
+                                                    <br>
+
+                                                    <div class="dropdown">
+                                                            <button class="dropbtn">Drug 2</button>
+                                                            <div class="dropdown-content">
+                                                            <a href="#">Drug 1</a>
+                                                            <a href="#">Drug 2</a>
+                                                            <a href="#">Drug 3</a>
+                                                            </div>
+                                                    </div>
+
+                                                
+                                                   
                                             </div>
 
-                                            <br> 
-
-                                            <div class="dropdown">
-                                                    <button class="dropbtn">Drug 2</button>
-                                                    <div class="dropdown-content">
-                                                      <a href="#">Drug 1</a>
-                                                      <a href="#">Drug 2</a>
-                                                      <a href="#">Drug 3</a>
-                                                    </div>
-                                            </div>
-
+<<<<<<< HEAD
                                         
                                              <div id="loader_2">
 											 
 											  
+=======
+                                            <div class = "col-md-10">
+                                                <div class = "card">
 
+                                                        <div id="loader_2"></div>
+>>>>>>> 326ce729d84bc8273bc18664afb421e80f3e1190
+
+                                                            
+                                            
+                                                    <div id = "postdemo">
+
+
+                                                            <h3 id = "font_margin">Predicted Specialty</h3>
+            
+                                                           <p id = "font_margin">Specialty:</p> 
+                                                           
+                                                            <input id = "font_margin" type="text" name="firstname" value="Hepatology">
+                                                            <br>
+                                                            <br>
+            
+                                                            <p id = "font_margin">
+                                                                    Top Drugs
+                                                                    <br>
+                                                                    1. xxx
+                                                                    <br>
+                                                                    2. xxx
+                                                                    <br> 
+                                                                    3. xxx
+                                                                    <br>
+                                                                    4. xxx
+                                                                    <br>
+                                                                    5. xxx
+                                                                    <br>
+                                                                </p>
+            
+                                                                <img src= "{{ url_for('static', filename='pie_temp.png')}}"  height = "500px" width = "500px" > 
+                                                        </div>
                                                 </div>
+                                            </div>
                                     
-                                        
                                     </div>
-                                </div>
+                             </div>
                             
+                                    
+                                            
+                                    
                         </div>
                         
                     </div>
@@ -339,9 +423,14 @@
     function loader_anime(){
         var targetElement = document.getElementById("loader_2");
         targetElement.className = "loader_test";
+        setTimeout("show()", 5000);
 
     }
 
+    function show(){
+        document.getElementById("postdemo").style.visibility = "visible";
+    }
+   
 
 </script>
 
