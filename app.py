@@ -46,9 +46,6 @@ from sklearn.feature_extraction.text import TfidfTransformer
 #import tensorflow as tf
 ####
 
-df = pd.read_csv('fulldata.csv', sep=',', low_memory=False)
-data2 = df[['brand_name_rx_count', 'gender', 'generic_rx_count', 'region', 'settlement_type', 'specialty', 'years_practicing']]
-
 
 	
 
@@ -130,12 +127,7 @@ def rundata_click():
 
 @app.route('/pull_data')
 def pulldata_click():
-    df_drugs = df.drop(['brand_name_rx_count', 'gender', 'generic_rx_count', 'region', 'settlement_type', 'specialty', 'years_practicing'], axis=1)
-    total_records = data2.shape[0]
-    region = data2['region'].value_counts()
-    south = region[0]
-    
-    return render_template('pull_data_API.html', total_records = total_records, south = south)
+    return render_template('pull_data_API.html')
 
 @app.route('/drugs')
 def drugs_click():
@@ -143,7 +135,7 @@ def drugs_click():
 
 @app.route('/gender')
 def gender_barplot():
-	
+	df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
 	series = df['gender']
 	fig_size=(10,5)
 	fig = plt.figure(figsize=(10,5))
@@ -196,11 +188,13 @@ def gender_specialty_graph():
 		fig.set_figheight(figheight)
 		fig.savefig('static/gender_vs_specialty.svg')
 		
+		
+	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
 	cat2='gender'
-	specialty_mincount=8000
-	specialty_maxcount=50000
-	cat2 = df[cat2]
-	specialty = df['specialty']
+	specialty_mincount=1500
+	specialty_maxcount=None
+	cat2 = ys[cat2]
+	specialty = ys['specialty']
 	dist = specialty.value_counts()
 	if specialty_maxcount == None:
 		specialty_maxcount = dist.max()
@@ -244,12 +238,12 @@ def gender_settlement_graph():
 		fig.savefig('static/gender_vs_settlement.svg')
 		
 		
-	
+	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
 	cat2='gender'
 	settlement_mincount=1500
 	settlement_maxcount=None
-	cat2 = data2[cat2]
-	settlement = data2['settlement_type']
+	cat2 = ys[cat2]
+	settlement = ys['settlement_type']
 	dist = settlement.value_counts()
 	if settlement_maxcount == None:
 		settlement_maxcount = dist.max()
@@ -294,12 +288,12 @@ def gender_region_graph():
 		fig.savefig('static/gender_vs_region.svg')
 		
 		
-	#ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
 	cat2='gender'
 	region_mincount=1500
 	region_maxcount=None
-	cat2 = data2[cat2]
-	region = data2['region']
+	cat2 = ys[cat2]
+	region = ys['region']
 	dist = region.value_counts()
 	if region_maxcount == None:
 		region_maxcount = dist.max()
@@ -345,12 +339,12 @@ def gender_years_graph():
 		fig.savefig('static/gender_vs_years.svg')
 		
 		
-	#ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
 	cat2='gender'
-	years_mincount=7000
-	years_maxcount=120000
-	cat2 = data2[cat2]
-	years = data2['years_practicing']
+	years_mincount=400
+	years_maxcount=None
+	cat2 = ys[cat2]
+	years = ys['years_practicing']
 	dist = years.value_counts()
 	if years_maxcount == None:
 		years_maxcount = dist.max()
@@ -362,8 +356,8 @@ def gender_years_graph():
 	
 @app.route('/settlement_type')
 def show_settlement_graph():
-	#df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
-	series = data2['settlement_type']
+	df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	series = df['settlement_type']
 	fig_size=(10,5)
 	fig = plt.figure(figsize=(10,5))
 	ax = plt.subplot()
@@ -416,12 +410,12 @@ def region_settlement_graph():
 		fig.set_figheight(figheight)
 		fig.savefig('static/region_vs_settlement.svg')
 		
-	#ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
 	cat2='settlement_type'
 	region_mincount=1500
 	region_maxcount=None
-	cat2 = data2[cat2]
-	region = data2['region']
+	cat2 = ys[cat2]
+	region = ys['region']
 	dist = region.value_counts()
 	if region_maxcount == None:
 		region_maxcount = dist.max()
@@ -467,12 +461,12 @@ def settlement_specialty_graph():
 		fig.savefig('static/settlement_vs_specialty.svg')
 		
 		
-	
+	ys = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
 	cat2='settlement_type'
-	specialty_mincount=8000
-	specialty_maxcount=50000
-	cat2 = data2[cat2]
-	specialty = data2['specialty']
+	specialty_mincount=1500
+	specialty_maxcount=None
+	cat2 = ys[cat2]
+	specialty = ys['specialty']
 	dist = specialty.value_counts()
 	if specialty_maxcount == None:
 		specialty_maxcount = dist.max()
@@ -485,13 +479,8 @@ def settlement_specialty_graph():
 
 @app.route('/specialty')
 def show_specialty_graph():
-	#df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
-	
-	df_specialty = df[['specialty']]
-	list2 = ['General Practice', 'Family', 'Psychiatry', 'Cardiovascular Disease', 'Medical', 'Gastroenterology', 'Neurology', 'Adult Health', 'Nephrology', 'Hematology & Oncology', 'Pulmonary Disease', 'Endocrinology, Diabetes & Metabolism', 'Oral and Maxillofacial Surgery']           
-	specialty_data = data2[data2['specialty'].isin(list2)]
-	
-	series = specialty_data['specialty']
+	df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	series = df['specialty']
 	fig_size=(18,15)
 	fig = plt.figure(figsize=(18,15))
 	ax = plt.subplot()
@@ -512,8 +501,8 @@ def show_specialty_graph():
 
 @app.route('/years_practice')
 def years_practice_graph():
-	#df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
-	series = data2['years_practicing']
+	df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	series = df['years_practicing']
 	fig_size=(10,5)
 	fig = plt.figure(figsize=(10,5))
 	ax = plt.subplot()
@@ -586,7 +575,7 @@ def show_rules():
     
 @app.route('/region')
 def target_barplot():
-	#df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
+	df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
 	series = df['region']
 	fig_size=(10,5)
 	fig = plt.figure(figsize=(10,5))
