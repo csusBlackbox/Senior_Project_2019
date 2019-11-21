@@ -139,15 +139,11 @@ def rundata_click():
 
 @app.route('/pull_data')
 def pulldata_click():
-<<<<<<< HEAD
-    return render_template('pull_data_API.html')
-=======
     df_drugs = df.drop(['brand_name_rx_count', 'gender', 'generic_rx_count', 'region', 'settlement_type', 'specialty', 'years_practicing'], axis=1)
     total_records = data2.shape[0]
     columns = data2.shape[1]
     
     return render_template('pull_data_API.html', total_records = total_records, columns = columns)
->>>>>>> 1979826a0988c2106e4a7556fc6c505c5312e59a
 
 @app.route('/drugs')
 def drugs_click():
