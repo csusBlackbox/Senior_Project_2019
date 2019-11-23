@@ -46,8 +46,8 @@ from sklearn.feature_extraction.text import TfidfTransformer
 #import tensorflow as tf
 ####
 
-# df = pd.read_csv('fulldata1.csv', sep=',', low_memory=False)
-# data2 = df[['brand_name_rx_count', 'gender', 'generic_rx_count', 'region', 'settlement_type', 'specialty', 'years_practicing']]
+#df = pd.read_csv('fulldata.csv', sep=',', low_memory=False)
+#data2 = df[['brand_name_rx_count', 'gender', 'generic_rx_count', 'region', 'settlement_type', 'specialty', 'years_practicing']]
 
 
 	
@@ -146,7 +146,7 @@ def pulldata_click():
     # total_records = data2.shape[0]
     # columns = data2.shape[1]
     
-    return render_template('pull_data_API.html', total_records = total_records, columns = columns)
+    return render_template('pull_data_API.html')
 
 @app.route('/drugs')
 def drugs_click():
@@ -569,30 +569,31 @@ def show_rules():
     # encode_text_dummy(data, 'gender')
     # encode_text_dummy(data, 'specialty')
     # encode_text_dummy(data, 'settlement_type')
-    # #data.head()
+    # # data.head()
     # # Get frequent itemsets
     # freq_items1 = apriori(data, min_support=0.009, use_colnames=True, verbose=1)
     # # Get the rules
     # rules1 = association_rules(freq_items1, metric="confidence", min_threshold=0.2)
-    # #rules1
-    # #Test 1 Visualization
+    # # rules1
+    # # Test 1 Visualization
     # plt.scatter(rules1['support'], rules1['confidence'], alpha=0.5)
     # plt.xlabel('Support')
     # plt.ylabel('Confidence')
     # plt.title('Support vs Confidence')
-    # #plt.show()
+    # # plt.show()
     # # Only grab needed columns from rule results
     # rules1_results = rules1[['antecedents', 'consequents', 'confidence']]
-    # #rules1_results.head()
-    # #rules1_results['confidence'].values
+    # # rules1_results.head()
+    # # rules1_results['confidence'].values
     # # Filter rules based on a relatively high confidence level - 90% 
     # results = rules1_results[rules1_results['confidence'].values >= .75]
 
     # results1 = results['antecedents']
     
-    
+  
 
     # antecedents = ([list(x) for x in results1])
+    
     # length = len(antecedents)
 
     # results2 = results['consequents']
@@ -600,11 +601,45 @@ def show_rules():
     # consequents = ([list(x) for x in results2])
 
 
-    # confidence = results['confidence'].tolist()
-
-    return  render_template('rules/rules.html')#, antecedents = antecedents, consequents = consequents, confidence = confidence, length = length)
-
+    # confidence = (results['confidence']*100).tolist()
+    # antecedents1 = []
+    # consequents1 = []
+    # confidence1 = []
+    # # cleaning lists
+    # for x in antecedents:
+        # # print(x)
+        # x_str = str(x)
+        # x_str=x_str.replace("[","")
+        # x_str=x_str.replace("]","")
+        # x_str=x_str.replace("ty-","ty is ")
+        # x_str=x_str.replace("pe-","pe is ")
+        # x_str=x_str.replace("_"," ")
+        # x_str=x_str.replace("'"," ")
+        # x_str=x_str.replace(",","and")
+        # antecedents1.append(x_str)
+        
+    # for x in consequents:
+        # x_str = str(x)
+        # x_str=x_str.replace("[","")
+        # x_str=x_str.replace("]","")
+        # x_str=x_str.replace("'"," ")
+        # x_str=x_str.replace("-"," is ")  
+        # consequents1.append(x_str)
+        
+    # for x in confidence:
+       # confidence1.append("%.0f"%x)
+    # f = open("static\\styles\\submission2.txt", "w")
+    # i = 0
+    # for x in zip(antecedents1,consequents1,confidence1):
+        # i = i+1
+        # f.write("Rule {}. We are {}% confident that if a given {} then that Doctor's {}<br/>".format(i,x[2], x[0], x[1]))
+    # f.close()
     
+    with open('static\\styles\\submission2.txt', 'r') as file:
+        file_data = file.readlines()
+    return  render_template('rules/rules.html')
+    #antecedents = antecedents, consequents = consequents, confidence = confidence, length = length)
+ 
 @app.route('/region')
 def target_barplot():
 	# #df = pd.read_csv('prescription_data.csv', sep=',', low_memory=False)
