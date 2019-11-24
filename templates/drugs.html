@@ -150,8 +150,8 @@
                                                     <br>
 
                                                     <div class="dropdown">
-                                                            <button class="dropbtn">Drug 1</button>
-                                                            <div class="dropdown-content">
+                                                            <button class="dropbtn" disabled>--Select--</button>
+                                                            <div class="dropdown-content" disabled>
                                                             <a href="#">Drug 1</a>
                                                             <a href="#">Drug 2</a>
                                                             <a href="#">Drug 3</a>
@@ -163,8 +163,8 @@
                                                     <br>
 
                                                     <div class="dropdown">
-                                                            <button class="dropbtn">Drug 2</button>
-                                                            <div class="dropdown-content">
+                                                            <button id = "menu_1" class="dropbtn" disabled>--Select--</button>
+                                                            <div class="dropdown-content" disabled>
                                                             <a href="#">Drug 1</a>
                                                             <a href="#">Drug 2</a>
                                                             <a href="#">Drug 3</a>
@@ -191,24 +191,11 @@
             
                                                            <p id = "font_margin">Specialty:</p> 
                                                            
-                                                            <input id = "font_margin" type="text" name="firstname" value="Pediatric Hematology-Oncology">
+                                                            <input id = "font_margin" type="text" name="firstname" value="Pediatric Hematology-Oncology"   size="30" disabled>
                                                             <br>
                                                             <br>
             
-                                                            <p id = "font_margin">
-                                                                    Top Drugs
-                                                                    <br>
-                                                                    1. xxx
-                                                                    <br>
-                                                                    2. xxx
-                                                                    <br> 
-                                                                    3. xxx
-                                                                    <br>
-                                                                    4. xxx
-                                                                    <br>
-                                                                    5. xxx
-                                                                    <br>
-                                                                </p>
+                                                           
             
                                                                 <img src= "{{ url_for('static', filename='demo_bar.png')}}"  height = "500px" width = "850px" > 
                                                         </div>
@@ -271,7 +258,10 @@
     });
 </script>
 <script>
-
+	var sec = 15;
+	var myTimer = document.getElementById('myTimer');
+	var myBtn = document.getElementById('menu_1');
+	window.onload = countDown;
     function loader_anime(){
         var targetElement = document.getElementById("loader_2");
         targetElement.className = "loader_test";
@@ -281,7 +271,10 @@
 
     function show(){
         document.getElementById("postdemo").style.visibility = "visible";
-    }
+		$("#myBtn").removeAttr("disabled");
+	}
+	
+	
    
 
 </script>
