@@ -44,7 +44,21 @@ text-align-last:center;
 	color: black;
 }
 
+.content{
+    background-color: white;
+}
 
+.h4{
+    background-color:white;
+}
+
+.spec{
+    font-style: italic;
+    font-weight: normal;
+    font-size: 32px;
+    margin-left: 40px;
+  
+}
 
 </style>
 
@@ -122,9 +136,9 @@ text-align-last:center;
                             
                              
                             <div class="col-md-4">
-                                <div class="card ">
-                                    <div class="card-header ">
-                                        <h4 class="card-title" >Drug Statistics</h4>
+                                <div >
+                                    <div >
+                                        <h4  >Drug Statistics</h4>
                                     </div>
                                    
                                     <img src= "{{ url_for('static', filename='pie_chart.svg')}}"  >  
@@ -190,14 +204,14 @@ text-align-last:center;
                                                     <div id = "postdemo">
 
 
-                                                            <h3 id = "font_margin">Predicted Specialty</h3>
+                                                            <h3 id = "font_margin">Predicted Specialty: </h3>
+                                                            <div class = row>
+                                                                <p class = "spec" > Pediatric Hematology-Oncology </p>
+                                                                <img src="https://img.icons8.com/color/48/000000/drop-of-blood.png">
+                                                            </div>
             
-                                                           <p id = "font_margin">Specialty:</p> 
-                                                           
-                                                            <input id = "font_margin" type="text" name="firstname" value="Pediatric Hematology-Oncology"   size="30" disabled>
-                                                            <img src="https://img.icons8.com/color/48/000000/drop-of-blood.png">
-                                                            <br>
-                                                            <br>
+                                                                
+                                                        
             
                                                            
             
@@ -210,7 +224,7 @@ text-align-last:center;
                              </div>
 
                              <div class="col-md-8">
-                                 <div class = "card">
+                                 <div >
                                     <div class="row2 ">
                                         <div class = "col-md-6">
                                             <p id = "font_margin">
