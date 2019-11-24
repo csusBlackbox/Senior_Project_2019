@@ -25,7 +25,28 @@
 </head>
 
 
+<style>
+#menu_1{
+width:150px;
+font-size: 18px;
+text-align-last:center;  
+}
 
+#menu_2{
+width:150px;
+font-size: 18px;
+text-align-last:center;  
+}
+
+
+#submit_button{
+    width: 150px ;
+	color: black;
+}
+
+
+
+</style>
 
 <body>
     <div class="wrapper">
@@ -156,29 +177,28 @@
                                                     <br>
                                                     <br>
 
-                                                    <div class="dropdown">
-                                                            <button class="dropbtn" disabled>--Select--</button>
-                                                            <div class="dropdown-content" disabled>
-                                                            <a href="#">Drug 1</a>
-                                                            <a href="#">Drug 2</a>
-                                                            <a href="#">Drug 3</a>
-                                                            </div>
-                                                    </div>
+                                                    <select id = "menu_1" disabled>
+													  <option>--Select--</option>
+													  <option>Drug 2</option>
+													  <option>Drug 3</option>
+													  <option>Drug 4</option>
+													</select>
 
-                                                    <br> 
+
+                                                  
                                                     <br>
                                                     <br>
 
-                                                    <div class="dropdown">
-                                                            <button id = "menu_1" class="dropbtn" disabled>--Select--</button>
-                                                            <div class="dropdown-content" disabled>
-                                                            <a href="#">Drug 1</a>
-                                                            <a href="#">Drug 2</a>
-                                                            <a href="#">Drug 3</a>
-                                                            </div>
-                                                    </div>
+                                                    <select id = "menu_2" disabled>
+													  <option>--Select--</option>
+													  <option>Drug 2</option>
+													  <option>Drug 3</option>
+													  <option>Drug 4</option>
+													</select>
+													<br>
+													<br>
 
-                                                
+													<button type="button" id = "submit_button" class="btn btn-primary btn-lg"  onclick="loader_anime()" disabled>Submit</button>
                                                    
                                             </div>
 
@@ -274,17 +294,20 @@
         var targetElement = document.getElementById("loader_2");
         targetElement.className = "loader_test";
         setTimeout("show()", 5000);
-
     }
 
     function show(){
         document.getElementById("postdemo").style.visibility = "visible";
 		$("#myBtn").removeAttr("disabled");
+		/*document.getElementById('menu_1').disabled = false;
+		document.getElementById('menu_2').disabled = false;*/
+		document.getElementById("menu_1").selectedIndex = 2;
+		document.getElementById("menu_2").selectedIndex = 1;
+		/*document.getElementById('menu_1').disabled = true;
+		document.getElementById('menu_2').disabled = true;
+		document.getElementById('submit_button').disabled = false;*/
 	}
 	
-	
-   
-
 </script>
 
 

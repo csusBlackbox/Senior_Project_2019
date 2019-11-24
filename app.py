@@ -44,7 +44,11 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.feature_extraction.text import TfidfTransformer
 #from lime.lime_tabular import LimeTabularExplainer
 #import tensorflow as tf
-####
+
+
+#For demo purposes commenting out every block of code that required use of df 
+
+# as csv file is over 1 gb, takes longer, saving graph files as svg, rules into txt file and reading that in rules.html
 
 #df = pd.read_csv('fulldata.csv', sep=',', low_memory=False)
 #data2 = df[['brand_name_rx_count', 'gender', 'generic_rx_count', 'region', 'settlement_type', 'specialty', 'years_practicing']]
