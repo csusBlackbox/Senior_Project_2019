@@ -39,6 +39,15 @@
     color: white;
     border-color: white;
 }
+
+#card1{
+width: 700px;
+
+}
+#card2{
+width: 900px;
+
+}
 </style>
 
 <body>
@@ -198,32 +207,142 @@
             <div class="content">
                 <div class="container-fluid">
 
-                    <div class="row">
-                        
-						 
-                        <div class="col-md-14">
-                            <div class="card ">
-                                <div class="card-header ">
-                                    <h4 class="card-title" >Drug Statistics</h4>
+                        <div class="row">
+                           <div id ="card1" class="card">
+                            
+                                <div class="col-md-14">
+                                
+                                        <div class="card-header ">
+                                            <h4 class="card-title" >Drug Statistics</h4>
+                                        </div>
+                                    
+                                        <img src= "{{ url_for('static', filename='pie_chart.svg')}}"  height = "400px" width = "600px">  
+
+                                        <p >This pie chart shows that the top 20 most common drugs comprise 33.3% of our data.
+                                        The dataset contains over 2,000 drugs, however, a large portion of the records (33.3%) reference only 20 of those drugs. 
+                                        This represents the significance of the “top” 20 drugs.</p>
+                                        
+
+                                        
+            
+                                        
+                                    </div>
+
                                 </div>
-                               
-                                <img src= "{{ url_for('static', filename='pie_chart.svg')}}"  height = "400px" width = "800px">  
-
-                                <p>This pie chart shows that the top 20 most common drugs comprise 33.3% of our data.
-								The dataset contains over 2,000 drugs, however, a large portion of the records (33.3%) reference only 20 of those drugs. 
-								This represents the significance of the “top” 20 drugs.</p>
-                                
-      
-                                
-                            </div>
-                        </div>
-
-                       
+                            
+                                    <div id ="card2" class ="card">
+                                <div class="col-md-16">
+                                        
+                                        
+                                            <div class = "col-md-6">
+                                                <p>
+                                                        Top Drugs      
+                                                        <br>
+                                                        1. LISINOPRIL                                                
+                                                        <br>
+                                                        2. HYDROCODONE-ACETAMINOPHEN                
+                                                        <br> 
+                                                        3. AMLODIPINE BESYLATE                              
+                                                        <br>
+                                                        4. OMEPRAZOLE                                               
+                                                        <br>
+                                                        5. SIMVASTATIN                                        
+                                                        <br>
+                                                        6. FUROSEMIDE                                         
+                                                        <br>
+                                                        7. ATORVASTATIN CALCIUM                     
+                                                        <br>
+                                                        8. LEVOTHYROXINE SODIUM                     
+                                                        <br>
+                                                        9. GABAPENTIN                                                
+                                                        <br>
+                                                        10. METOPROLOL TARTRATE                       
+                                                        <br>
+                                                        11. CLOPIDOGREL               
+                                                        <br>
+                                                        12. METOPROLOL SUCCINATE      
+                                                        <br>
+                                                        13. CARVEDILOL                
+                                                        <br>
+                                                        14. WARFARIN SODIUM          
+                                                        <br>
+                                                        15. CLONAZEPAM                
+                                                        <br>
+                                                        16. TRAZODONE HCL          
+                                                        <br>
+                                                        17. ALPRAZOLAM                 
+                                                        <br>
+                                                        18. METFORMIN HCL               
+                                                        <br>
+                                                        19. LOSARTAN POTASSIUM         
+                                                        <br>
+                                                        20. PREDNISONE                
+                                                        <br>
+                
+                                                    
+                                                    </p>
+                                                </div>
+            
+                                                <div class = "col-md-6">
+                                                        <p>
+                                                                Used For
+                                                                <br>
+                                                                1. High blood pressure                          
+                                                                <br>
+                                                                2. Pain management             
+                                                                <br> 
+                                                                3. High blood pressure                 
+                                                                <br>
+                                                                4. Heart burn                                 
+                                                                <br>
+                                                                5. High Cholesterol                           
+                                                                <br>
+                                                                6. High blood pressure                          
+                                                                <br>
+                                                                7. High Cholesterol                 
+                                                                <br>
+                                                                8. Hypothyroidism                   
+                                                                <br>
+                                                                9. Shingles                                   
+                                                                <br>
+                                                                10. High blood pressure               
+                                                                <br>
+                                                                11. Prevent heart attack
+                                                                <br>
+                                                                12. High blood pressure 
+                                                                <br>
+                                                                13. High blood pressure
+                                                                <br>
+                                                                14. Prevent blood clots
+                                                                <br>
+                                                                15. Treat anxiety
+                                                                <br>
+                                                                16.  Treat depression
+                                                                <br>
+                                                                17. Treat anxiety 
+                                                                <br>
+                                                                18. Treat diabetes
+                                                                <br>
+                                                                19. High blood pressure 
+                                                                <br>
+                                                                20. Treat inflamation 
+                                                                <br>
                         
-                    </div>
-                    
-                </div>
-            </div>
+                                                            
+                                                            </p>
+                                                        </div>
+            
+                                            
+                                </div>
+
+                                     </div>
+                            
+                           
+
+
+                        
+                        </div>
+                 </div>
             <footer class="footer">
                 <div class="container-fluid">
                     <nav>
