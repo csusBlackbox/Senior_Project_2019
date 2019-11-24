@@ -628,15 +628,15 @@ def show_rules():
         
     # for x in confidence:
        # confidence1.append("%.0f"%x)
-    # f = open("static\\styles\\submission2.txt", "w")
+    # f = open("static\\rules.txt", "w")
     # i = 0
     # for x in zip(antecedents1,consequents1,confidence1):
         # i = i+1
-        # f.write("Rule {}. We are {}% confident that if a given {} then that Doctor's {}<br/>".format(i,x[2], x[0], x[1]))
+        # f.write("Rule {}. We are {}% confident that if a given {} then that Doctor's {}.<br/>".format(i,x[2], x[0], x[1]))
     # f.close()
     
-    with open('static\\styles\\submission2.txt', 'r') as file:
-        file_data = file.readlines()
+    # with open('static\\rules.txt', 'r') as file:
+        # file_data = file.readlines()
     return  render_template('rules/rules.html')
     #antecedents = antecedents, consequents = consequents, confidence = confidence, length = length)
  

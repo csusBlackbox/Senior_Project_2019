@@ -1,0 +1,139 @@
+#logout{
+    position: absolute;
+	top: -5px;
+	left: 1500px;
+}
+
+.btn{
+    background-color: blueviolet;
+    color: white;
+    border-color: white;
+}
+
+
+#demobutton{
+    width: 150px ;
+}
+
+
+/* Start of Drop Down Styling*/
+
+/* Style The Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  width: 150px; 
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width: 150px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 18px;
+  width: 150px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    width: 150px;
+}
+
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+  width: 150px;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+  width: 150px;
+}
+
+/* End of Drop Down Styling*/
+
+/* Start of Loader Styling*/
+.loader_test {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        position: absolute;
+        left: 45%;
+        top: 35%;
+        animation: spin 5s  forwards;
+       
+        }
+        @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+        0%   {opacity: 1;}
+        90%  {opacity: 1;}
+        100% {opacity: 0;}
+        }
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        0%   {opacity: 1;}
+        90%  {opacity: 1;}
+        100% {opacity: 0;}
+        }
+/* End of Loader Styling*/
+
+#postdemo{
+    visibility: hidden;
+
+}
+
+.load_content{
+    animation: apppear 5s forwards; 
+    visibility: visible;
+}
+        @-webkit-keyframes appear {
+        to   { visibility: visible; }
+        0%   {opacity: 0;}
+        90%  {opacity: 1;}
+        100% {opacity: 1;}
+        }
+        @keyframes appear {
+        to   { visibility: visible; }
+        0%   {opacity: 0;}
+        90%  {opacity: 1;}
+        100% {opacity: 1;}
+        }
+
+
+#font_margin{
+    margin-left: 40px;
+    font-size: 18px;
+}
+h3{
+    font-weight: bold;
+}
